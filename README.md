@@ -57,7 +57,7 @@ Each row is a separate item. Its matching **A-number in Part 2** explains the sa
 - **Use the right terminal.** Python/Conda/Node commands work in macOS Terminal or your normal Windows PowerShell/Conda prompt. macOS-only and Linux-only steps are labelled. Choose one matching installation method, not every alternative. Run separate command lines one at a time.
 - **Keep the same supported release line.** For example, use the fixed Node 24.x version for Node 24. **≥ means “at least”.** A supplier-confirmed backport is also acceptable. Do not downgrade an already fixed newer version.
 
-The OS updater in 01 can be used before the developer-tool certificate repairs: it verifies vendor signatures on update files. For later official downloads, use the browser protection checked in 02. A normal update command is not automatically proof that an old downloader can safely obtain its own fix; any remaining condition is stated in its item/A-entry.
+The OS updater in 01 can be used before the developer-tool certificate repairs: it verifies vendor signatures on update files. For later official downloads, follow the browser guidance in 02. A normal update command is not automatically proof that an old downloader can safely obtain its own fix; any remaining condition is stated in its item/A-entry.
 
 ### 01. Operating-system updates
 
@@ -80,15 +80,15 @@ On a work-managed computer, use your organisation’s normal update process. IT 
 
 **Before:** Complete 01. Keep normal browser/security updates enabled.
 
-| Browser | Do this |
+| Browser | Update guidance |
 | --- | --- |
-| Chrome | No special version upgrade is needed if its automatic certificate-blocking update has arrived. Keep automatic updates on. |
-| Firefox desktop | No special version upgrade is needed if its automatic certificate-blocking updates are working. If disabled/unavailable, use a fixed supported line: **158.0.1**, **ESR 153.5.1** or **ESR 115.43.1**, or a later fixed release on that line. |
-| Safari | No separate incident-specific update is needed when Apple’s automatic certificate blocks are current. |
-| Microsoft Edge — Windows/macOS | Open **⋯ → Help and feedback → About Microsoft Edge**, or enter `edge://settings/help`. Allow updates, select **Restart** if asked, and keep automatic updates on. Also check the affected-certificate test pages below. |
-| Other browser | Follow its vendor’s update/security guidance. Do not assume Chrome’s update also updated another browser. |
+| Chrome | Certificate-blocking updates arrive automatically. |
+| Firefox | Certificate-blocking updates arrive automatically. |
+| Safari | Certificate-blocking updates arrive automatically. |
+| Microsoft Edge | Certificate-blocking updates arrive automatically. |
+| Other browser | Check your browser vendor’s update guidance. |
 
-**Check:** use the [browser tests](#connection-tests). Do not continue past certificate warnings. If protection or automatic updates cannot be confirmed, ask the maintainer/IT before using that browser to download the first fixes.
+If you’d like to double-check, see the [optional browser checks in the appendix](#connection-tests).
 
 [Why this update method is safe, and what it covers → A02](#a02-browsers)
 
@@ -725,7 +725,7 @@ Existing pip-installed LiteLLM 1.106 example: `python -m pip install "litellm==1
 - [ ] The actual program/environment was checked, not a different installed copy.
 - [ ] Current project files/caches will not bring the old version back.
 - [ ] Running apps/jobs were restarted or redeployed where needed.
-- [ ] Relevant connection tests pass; unconfirmed vendor/runtime checks remain **pending confirmation**.
+- [ ] Relevant application/service connection tests pass; unconfirmed vendor/runtime checks remain **pending confirmation**.
 
 ## Part 2 — Why each update method is safe, and what it covers
 
@@ -1172,7 +1172,7 @@ Sources: [Render’s deployment and verification advisory](https://render.com/do
 
 ### Connection tests
 
-**Browser check:** first open a normal HTTPS site. Then open both test pages; certificate warnings are expected. **Do not continue past them.**
+**Optional browser check:** first open a normal HTTPS site. Then open both test pages; certificate warnings are expected. **Do not continue past them.**
 
 - [emSign route](https://dv-g3b-emudhra.we-have-a-problem.com/)
 - [AAA cross-signed route](https://dv-g3b-aaa-emudhra.we-have-a-problem.com/)
