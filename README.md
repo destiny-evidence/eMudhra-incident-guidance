@@ -72,8 +72,6 @@ The OS updater in 01 can be used before the developer-tool certificate repairs: 
 
 On a work-managed computer, use your organisation’s normal update process. IT should also confirm that automatic certificate-list updates are reaching it.
 
-**Windows:** its trusted/blocked certificate lists normally update automatically, separately from ordinary OS releases. The curl supplied with Windows uses that system protection by default; no macOS-style certificate-file edit is needed for that setup. Still follow 05 for Git for Windows, and the later items for your Python, Conda, Node and other installed tools. Separate curl/OpenSSL installations are covered in 23.
-
 [Why this update method is safe, and what it covers → A01](#a01-operating-system-updates)
 
 ### 02. Browsers
