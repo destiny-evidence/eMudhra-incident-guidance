@@ -756,7 +756,7 @@ Sources: [Apple incident guidance](https://support.apple.com/en-us/149555), [App
 
 **Edge evidence.** FairSSL and Tanium describe protection on tested installations; a separate Microsoft incident announcement was not found in this check. Tanium’s version number identifies the certificate-revocation component, not the browser.
 
-**Scope.** Automatic delivery requires internet access. Mozilla notes that unusual settings can prevent its background update and provides fixed browser releases for those users. These browser protections do not update the separate certificate files used by command-line tools, Python environments or other applications; those have their own sections in this guide.
+**Scope.** Automatic delivery requires internet access. Mozilla notes that unusual settings can prevent its background update and provides fixed browser releases for those users.
 
 [Back to action 02](#02-browsers)
 
