@@ -4,7 +4,8 @@
 
 ## Part 1 — What to do
 
-> **You will not have all these tools. Only follow items for software you already use. Skip the rest. Do not install a program just because it appears in this guide.**
+> [!IMPORTANT]
+> You will not have all these tools. Only follow items for software you already use. Skip the rest. Do not install a program just because it appears in this guide.
 
 Start with your operating system and browser. Then find your tools in the list below and work through those items. Project/CI/server items are for whoever maintains those systems. If you do not recognise a tool or know how it was installed, ask the person supporting that setup rather than trying every command.
 
@@ -140,7 +141,7 @@ brew update
 brew list --versions ca-certificates
 ```
 
-If the second command prints an installed version, run:
+If the second command prints an installed version older than `ca-certificates 2026-10-20`, run:
 
 ```bash
 brew upgrade ca-certificates
@@ -720,17 +721,13 @@ Existing pip-installed LiteLLM 1.106 example: `python -m pip install "litellm==1
 
 [Why this update method is safe, and what it covers → A33](#a33-running-services-workers-and-scheduled-jobs)
 
-### Finish: record your result
+### Final Checklist
 
 - [ ] Relevant tools updated; unused tools marked **not applicable**.
 - [ ] The actual program/environment was checked, not a different installed copy.
 - [ ] Current project files/caches will not bring the old version back.
 - [ ] Running apps/jobs were restarted or redeployed where needed.
 - [ ] Relevant connection tests pass; unconfirmed vendor/runtime checks remain **pending confirmation**.
-
-| Computer/environment | Item | Version/program location or image | Update/test result | Status / person responsible |
-| --- | --- | --- | --- | --- |
-| Your target | e.g. 11 — pip | Actual Python/pip location and version | Record result | Complete / pending / not applicable |
 
 ## Part 2 — Why each update method is safe, and what it covers
 
@@ -981,7 +978,9 @@ Sources: [pipx CLI and shared-pip operations](https://pipx.pypa.io/stable/refere
 
 **Limits and follow-up.** Check requirements*.txt, pyproject.toml, locks, Conda/Pixi specs, Dockerfiles, .nvmrc/.node-version, Volta/packageManager settings, hook runtime versions and workflows. Review the dependency diff. Historical locks need not be rewritten; label unsuitable online rebuilds and provide a corrected active definition. Old model/source files are not automatically malicious.
 
-Sources: [uv targeted lock upgrades](https://docs.astral.sh/uv/concepts/projects/sync/), [Poetry update command](https://python-poetry.org/docs/cli/#update), [pip-tools targeted upgrades](https://pip-tools.readthedocs.io/en/stable/), [GitHub cache management](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manage-caches).
+**Why recreation can work.** A replacement removes the old environment’s installed copies, provided its creator and saved requirements select fixed versions. An old creator can still supply old starter pip, and unchanged requirements can reinstall old certificate packages. Complete 11 before other package downloads and check 12 after setup. Python treats project virtual environments as disposable; the incident advisory also supports updating existing environments. Keep project files outside the environment and test the replacement before removing the old one.
+
+Sources: [uv targeted lock upgrades](https://docs.astral.sh/uv/concepts/projects/sync/), [Poetry update command](https://python-poetry.org/docs/cli/#update), [pip-tools targeted upgrades](https://pip-tools.readthedocs.io/en/stable/), [GitHub cache management](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manage-caches), [Python virtual-environment lifecycle](https://docs.python.org/3/library/venv.html), [Python incident guidance for existing environments](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576).
 
 [Back to action 19](#19-project-version-files-and-saved-environments)
 
