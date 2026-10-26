@@ -745,7 +745,7 @@ Sources: [Apple incident guidance](https://support.apple.com/en-us/149555), [App
 
 ### A02. Browsers
 
-**Checked: 26 October 2026.** Certificate-blocking updates tell a browser which certificates to reject. They can arrive in the background, separately from installing a new browser version. Vendor documentation explains automatic delivery; incident notices and direct test reports show that the eMudhra blocks have reached browsers.
+**Checked: 26 October 2026.**
 
 | Claim | Sources | Quotes |
 | --- | --- | --- |
