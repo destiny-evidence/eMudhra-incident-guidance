@@ -7,7 +7,7 @@
 > [!IMPORTANT]
 > You will not have all these tools. Only follow items for software you already use. Skip the rest. Do not install a program just because it appears in this guide.
 
-Start with your operating system and browser. Then find your tools in the list below and work through those items. Project/CI/server items are for whoever maintains those systems. If you do not recognise a tool or know how it was installed, ask the person supporting that setup rather than trying every command.
+Read the operating-system and browser guidance, then find your tools in the list below and work through those items. Project/CI/server items are for whoever maintains those systems. If you do not recognise a tool or know how it was installed, ask the person supporting that setup rather than trying every command.
 
 ### Order of work
 
@@ -15,7 +15,7 @@ Each row is a separate item. Its matching **A-number in Part 2** explains the sa
 
 | Step | Tool or task | Only applies if… |
 | --- | --- | --- |
-| [01](#01-operating-system-updates) | Operating-system updates | Everyone: follow the row for your computer. |
+| [01](#01-operating-system-certificate-protection) | Operating-system certificate protection | Everyone. |
 | [02](#02-browsers) | Browsers | Everyone: check the browser you use. Do not install all of these browsers. |
 | [03](#03-macos-command-line-certificates) | macOS command-line certificates | macOS users who run curl, Git, Python or similar tools from Terminal. |
 | [04](#04-homebrew) | Homebrew | You already use Homebrew on macOS. |
@@ -57,28 +57,23 @@ Each row is a separate item. Its matching **A-number in Part 2** explains the sa
 - **Use the right terminal.** Python/Conda/Node commands work in macOS Terminal or your normal Windows PowerShell/Conda prompt. macOS-only and Linux-only steps are labelled. Choose one matching installation method, not every alternative. Run separate command lines one at a time.
 - **Keep the same supported release line.** For example, use the fixed Node 24.x version for Node 24. **≥ means “at least”.** A supplier-confirmed backport is also acceptable. Do not downgrade an already fixed newer version.
 
-The OS updater in 01 can be used before the developer-tool certificate repairs: it verifies vendor signatures on update files. For later official downloads, follow the browser guidance in 02. A normal update command is not automatically proof that an old downloader can safely obtain its own fix; any remaining condition is stated in its item/A-entry.
+For official downloads, follow the browser guidance in 02. A normal update command is not automatically proof that an old downloader can safely obtain its own fix; any remaining condition is stated in its item/A-entry.
 
-### 01. Operating-system updates
+### 01. Operating-system certificate protection
 
-**Applies to:** Everyone: follow the row for your computer.
+**Applies to:** Everyone.
 
-**Before:** You can start here. Use the updater built into Settings.
+**No manual action is normally needed on Windows or macOS.** Certificate-blocking updates arrive automatically.
 
-| Your computer | Do this |
-| --- | --- |
-| macOS | **System Settings → General → Software Update**. Install available security updates and restart if asked. Keep automatic system-data/security updates enabled. |
-| Windows | **Settings → Windows Update → Check for Windows updates**. Install available security updates and restart if asked. Windows 10 puts this under **Update & Security**. |
+If you use Terminal tools on macOS, also follow [03](#03-macos-command-line-certificates).
 
-On a work-managed computer, use your organisation’s normal update process. IT should also confirm that automatic certificate-list updates are reaching it.
-
-[Why this update method is safe, and what it covers → A01](#a01-operating-system-updates)
+[Evidence for automatic certificate protection → A01](#a01-operating-system-certificate-protection)
 
 ### 02. Browsers
 
 **Applies to:** Everyone: check the browser you use. Do not install all of these browsers.
 
-**Before:** Complete 01. Keep normal browser/security updates enabled.
+**Before:** Keep normal browser/security updates enabled.
 
 | Browser | Update guidance |
 | --- | --- |
@@ -96,7 +91,7 @@ If you’d like to double-check, see the [optional browser checks in the appendi
 
 **Applies to:** macOS users who run curl, Git, Python or similar tools from Terminal.
 
-**Before:** Complete 01. These commands edit a system file and may ask for your Mac login password.
+**Before:** These commands edit a system file and may ask for your Mac login password.
 
 If both roots were already removed, skip to the check. Otherwise follow Apple’s commands in order.
 
@@ -731,17 +726,18 @@ Existing pip-installed LiteLLM 1.106 example: `python -m pip install "litellm==1
 
 **A01 corresponds to 01, A02 to 02, and so on.** Each entry separates two questions: whether the first update can be obtained safely, and whether the resulting update fixes the relevant component. “Documented update command” and “confirmed incident fix” are not the same thing.
 
-### A01. Operating-system updates
+### A01. Operating-system certificate protection
 
-**Download safety and ordering.** The built-in updater checks the update file’s vendor signature, separately from the HTTPS certificate used to download it. Apple says Software Update verifies Apple’s signature automatically before installation. Microsoft requires updates from its public update service to be Microsoft-signed. Forging a website certificate does not supply the valid vendor signature needed for a substituted OS update. This is why this step can come before repairing developer-tool certificate files.
+**Checked: 26 October 2026.**
 
-**What this fixes.** Available OS updates and automatic certificate-list updates protect the parts of the system that use them. Windows normally retrieves trusted and disallowed certificate lists automatically through its CTL Updater, separately from ordinary OS releases. Microsoft’s built-in curl uses Schannel, which normally uses the Windows certificate store and checks revocation. This differs from the separate Apple PEM file in 03. There is no requirement to download a certificate file from an unfamiliar site before running the built-in updater.
+| Claim | Sources | Quotes |
+| --- | --- | --- |
+| **macOS:** Apple delivers certificate-blocking updates automatically, separately from macOS releases. Apple confirms that the eMudhra block has been active since 19 October for Safari, Mail and apps using its networking and security frameworks. | [Apple’s incident guidance](https://support.apple.com/en-us/149555) | “Updates to certificate configuration data are sent to devices automatically and as needed” |
+| **Windows:** trusted and blocked certificate lists update automatically by default. Tanium inspected Microsoft’s block list dated 19 October and found all eight compromised keys included. | [Microsoft’s certificate-update documentation](https://learn.microsoft.com/en-us/windows-server/identity/ad-cs/certificate-trust)<br><br>[Tanium’s inspection, reported 24 October 2026](https://www.tanium.com/blog/emudhra-ca-compromise-find-and-fix-your-exposure-with-tanium) | **Microsoft:** “By default, Windows downloads the CTLs from the Internet via an automatic mechanism called the CTL Updater.”<br><br>**Tanium:** “dated October 19, lists all eight compromised keys” |
 
-**Limits and follow-up.** This is not a guarantee against unrelated problems or a reason to bypass an update/signature error. IT-managed update servers follow organisation policy; confirm automatic certificate-list delivery is current rather than inferring it from the OS version. Schannel describes the built-in curl’s default architecture, not proof that every Windows download client or custom CA setting is protected. Git for Windows, private application bundles and WSL are separate: see 05, the relevant tool items and 25. OS updates do not replace every application’s own certificate list. Apple still describes the separate command-line file fix as forthcoming; see 03.
+**Scope.** Automatic delivery requires internet access and enabled certificate updates. Apple’s separate command-line certificate fix is still pending; see [03](#03-macos-command-line-certificates).
 
-Sources: [Apple incident guidance](https://support.apple.com/en-us/149555), [Apple background-update settings](https://support.apple.com/en-us/101591), [Microsoft’s Windows Update instructions](https://support.microsoft.com/en-us/windows/deployment/updates-lifecycle/install-windows-updates), [Microsoft’s CTL documentation](https://learn.microsoft.com/en-us/windows-server/identity/ad-cs/certificate-trust), [Apple: automatic update-signature verification](https://support.apple.com/en-us/102130), [Microsoft: required signatures for public Windows Update](https://learn.microsoft.com/en-us/windows/deployment/update/waas-wu-settings#allow-signed-updates-from-an-intranet-microsoft-update-service-location), [curl supplied with Windows uses Schannel](https://curl.se/windows/microsoft.html).
-
-[Back to action 01](#01-operating-system-updates)
+[Back to action 01](#01-operating-system-certificate-protection)
 
 ### A02. Browsers
 
@@ -751,7 +747,7 @@ Sources: [Apple incident guidance](https://support.apple.com/en-us/149555), [App
 | --- | --- | --- |
 | **Chrome:** the eMudhra certificate block was delivered automatically, without a browser update or restart. | [Google’s incident notice](https://blog.google/security/protecting-chrome-and-android-users-from-compromised-emudhra-intermediate-ca-certificates/) | “Chrome users were immediately protected against all certificates sharing those keys, without requiring a browser update or restart.” |
 | **Firefox:** users with normal settings received the eMudhra certificate block automatically through OneCRL, without updating or restarting Firefox. | [Mozilla’s incident notice](https://blog.mozilla.org/security/2026/10/20/protecting-firefox-users-following-the-compromise-of-emudhra-intermediate-certificates/) | “OneCRL delivers this protection without requiring users to update or restart Firefox.” |
-| **Safari:** Apple automatically delivers the certificate blocks that protect Safari against this incident. | [Apple’s incident guidance](https://support.apple.com/en-us/149555) | “Your Apple devices now automatically block these certificates in Safari, Mail, and apps that use Apple's networking and security frameworks.” |
+| **Safari:** Apple automatically delivers the certificate blocks that protect Safari against this incident. | [Apple’s incident guidance](https://support.apple.com/en-us/149555) | “Your Apple devices now automatically block these certificates in Safari” |
 | **Microsoft Edge:** certificate-revocation lists receive automatic security updates, including when component updates are disabled. Independent tests found the eMudhra block working. | [Microsoft’s component-update policy](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-policies/componentupdatesenabled)<br><br>[FairSSL’s Windows 11 tests, 21 October 2026](https://www.fairssl.dk/en/articles/emudhra-ca-noegler-knaekket/)<br><br>[Tanium’s lab report, 24 October 2026](https://www.tanium.com/blog/emudhra-ca-compromise-find-and-fix-your-exposure-with-tanium) | **Microsoft:** “updates that are deemed "critical for security" are still applied even if you disable this policy.” The examples include “certificate revocation lists”.<br><br>**FairSSL:** “on the evening of 21-10-2026 Edge blocked them in our test.”<br><br>**Tanium:** “In an internal Tanium lab, these versions showed as protected” … “Edge with CRLSet 6498.2026.10.20” |
 
 **Edge evidence.** FairSSL and Tanium describe protection on tested installations; a separate Microsoft incident announcement was not found in this check. Tanium’s version number identifies the certificate-revocation component, not the browser.
@@ -1229,7 +1225,7 @@ For complete offline bundle checks, follow [Conda’s published OpenSSL instruct
 
 The compromised signing keys belonged to **intermediate CAs**, not the root keys themselves. An affected client can accept a forged website certificate if an attacker also gets the connection to reach their server, for example through network/routing/DNS interference. Merely having an affected program installed does not execute an attack. A fix can block the affected keys/certificates or remove roots authorising them. An old root in a file alone does not establish vulnerability when the live verifier separately blocks the keys; revocation alone does not protect software that never enforces it.
 
-The website certificate and the update file’s vendor signature are **different checks**. The OS explanation in A01 relies on the latter, not on pretending that every certificate list was fixed before the first update. A checksum also helps only when its expected value came from a trusted source; an attacker who can replace both file and checksum on the same intercepted connection defeats that comparison. Keep normal publisher, signature and artifact-integrity checks enabled.
+The website certificate and the update file’s vendor signature are **different checks**. A checksum also helps only when its expected value came from a trusted source; an attacker who can replace both file and checksum on the same intercepted connection defeats that comparison. Keep normal publisher, signature and artifact-integrity checks enabled.
 
 **Unconfirmed fixes stay unconfirmed.** For Micromamba, self-contained pnpm 12, the listed unconfirmed editor/AI/CLI bundles, hf_xet, Ollama and LM Studio, obtain the component’s own vendor/build evidence or sufficiently complete client checks. The checked Microsoft sources do not name a minimum incident-specific Edge version either. Being listed here does not prove vulnerability; a vendor’s silence or “latest” status does not prove protection. If an affected program is confirmed and has no protected update route, stop its affected network operations until repaired.
 
