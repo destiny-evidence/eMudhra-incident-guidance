@@ -21,7 +21,7 @@ Each row is a separate item. Sections 01–28 have matching **A-numbers in Part 
 | [04](#04-homebrew) | Homebrew | You already use Homebrew on macOS. |
 | [05](#05-git-for-windows) | Git for Windows | Windows users with Git installed, including portable copies. |
 | [06](#06-conda-miniconda-anaconda-and-miniforge) | Conda, Miniconda, Anaconda and Miniforge | You use any of these Conda distributions. |
-| [07](#07-uv-and-the-python-copies-it-manages) | uv and the Python copies it manages | You use uv, or still use a Python downloaded by uv. |
+| [07](#07-uv) | uv | You use uv. |
 | [08](#08-python-installations) | Python installations | You run Python, including through Conda, uv, Homebrew or python.org. |
 | [09](#09-pip-in-each-python-environment) | pip in each Python environment | You install packages with pip. Repeat in each environment you use. |
 | [10](#10-python-certificate-packages-in-each-environment) | Python certificate packages in each environment | An environment uses certifi or Conda ca-certificates for downloads/API calls. |
@@ -172,28 +172,23 @@ Repeat for separate Conda installations. For other environments, follow [10](#10
 
 [Update evidence and verification limits → A06](#a06-conda-miniconda-anaconda-and-miniforge)
 
-### 07. uv and the Python copies it manages
+### 07. uv
 
-**Applies to:** You use uv, or still use a Python downloaded by uv.
+**Applies to:** People who use uv.
 
-**Before:** For pip-installed uv, complete 09 first. For Homebrew, complete 04. An old standalone self-updater needs a verified download route.
+**Before:** For a direct installation on macOS, complete both root removals in [03](#03-macos-command-line-certificates). Windows uses the automatic protection in [01](#01-operating-system-certificate-protection). For Homebrew, complete [04](#04-homebrew); for pip, complete [09](#09-pip-in-each-python-environment) first.
+
+For direct installations, check `uv --version` first. If it is below **0.11.2**, see [A07’s older-version note](#a07-uv).
 
 | How uv was installed | Update — choose one |
 | --- | --- |
-| Direct installation | `uv self update` |
+| Direct installation — macOS or Windows | `uv self update --system-certs` |
 | Homebrew | `brew upgrade uv` |
-| pip | `python -m pip install --upgrade "uv>=0.13.5"` |
+| pip | `python -m pip install --upgrade "uv>=0.13.6"` |
 
-Then refresh each managed Python release line you use; for example:
-```bash
-uv python upgrade 3.12
-uv --version
-uv python list --only-installed
-```
+**Check:** `uv --version` should now report **0.13.6 or later**.
 
-**Target:** uv **≥0.13.5**. Check pip in existing environments using 09.
-
-[Why this update method is safe, and what it covers → A07](#a07-uv-and-the-python-copies-it-manages)
+[Update evidence and download protection → A07](#a07-uv)
 
 ### 08. Python installations
 
@@ -212,7 +207,7 @@ uv python list --only-installed
 | How installed | Update |
 | --- | --- |
 | Conda, existing Python 3.12 example | `conda install --name myenv "python>=3.12.16,<3.13"` |
-| uv | Follow 07 for each managed release line. |
+| Downloaded by uv | `uv python upgrade` |
 | python.org, 3.14/3.15 | Run the current [python.org installer](https://www.python.org/downloads/) for your existing release line. |
 | Homebrew/other supplier | Update the same versioned package; require the fix or a documented backport. |
 
@@ -742,17 +737,23 @@ Once the actual download route uses the corrected certificates, run the update i
 
 [Back to action 06](#06-conda-miniconda-anaconda-and-miniforge)
 
-### A07. uv and the Python copies it manages
+### A07. uv
 
-**Download safety and ordering.** A protected pip from 09 can fetch pip-installed uv. Homebrew follows 04. A still-affected standalone uv cannot be declared safe merely because self-update is a documented command: use independently verified vendor artifacts through 02/IT if necessary.
+**Checked: 27 October 2026.**
 
-**What this fixes.** uv’s TLS fix was in 0.13.4; 0.13.5 also makes refreshed Python 3.11+ builds available with fixed pip/ensurepip starters. Update uv first so it knows the newer builds, then upgrade the managed Python.
+| Claim | Sources | Quotes |
+| --- | --- | --- |
+| **Self-update command and protection:** Astral maintainer William Woodruff recommends self-updating using the protected OS verifier. 07 substitutes the equivalent `--system-certs` flag so the same command works on macOS and Windows, once the protection in 01 has arrived. | [Maintainer’s incident-specific update advice](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576/10)<br><br>[Astral’s equivalent certificate options](https://docs.astral.sh/uv/concepts/authentication/certificates/#system-certificates) | **Maintainer:** `UV_SYSTEM_CERTS=true uv self update`; “assumes that your system certificates/verifier are already updated”.<br><br>**Options:** “pass the `--system-certs` flag”; “set the `UV_SYSTEM_CERTS` environment variable to `true`”. |
+| **Package-manager commands:** Homebrew and pip update their own uv installations after 04 or 09. The pip command adds a fixed minimum; the Homebrew command applies its documented upgrade syntax to uv. | [Astral’s package-manager update instructions](https://docs.astral.sh/uv/getting-started/installation/#upgrading-uv)<br><br>[Homebrew’s update instructions](https://docs.brew.sh/FAQ#how-do-i-update-my-local-packages)<br><br>[Homebrew download protection](#a04-homebrew) and [pip download protection](#a09-pip-in-each-python-environment) | **Astral:** `pip install --upgrade uv`.<br><br>**Homebrew:** `brew upgrade <formula>`. |
+| **macOS installer downloads — source assessment:** self-update reruns an installer that makes further downloads with curl. When that is Apple’s bundled curl, both root removals in 03 protect those downloads. | [Astral’s update behavior](https://docs.astral.sh/uv/getting-started/installation/#upgrading-uv)<br><br>[Apple’s incident repair](https://support.apple.com/en-us/149555)<br><br>[Astral’s shell installer, inspected at 0.13.6](https://releases.astral.sh/github/uv/releases/download/0.13.6/uv-installer.sh) | **Astral:** “Updating uv will re-run the installer”.<br><br>**Apple:** “also remove AAA Certificate Services”.<br><br>**Installer:** `curl -sSfL "$1" -o "$2"`. |
+| **Windows installer downloads — source assessment:** subsequent downloads by the PowerShell installer also use Windows’ certificate checks, benefiting from the incident block once delivered through 01. | [Astral’s Windows installer, inspected at 0.13.6](https://releases.astral.sh/github/uv/releases/download/0.13.6/uv-installer.ps1)<br><br>[Microsoft’s .NET TLS documentation](https://learn.microsoft.com/en-us/dotnet/framework/network-programming/tls)<br><br>[Microsoft’s incident response](https://www.microsoft.com/en-us/msrc/blog/2026/10/microsoft-response-to-compromised-emudhra-certificate-authority-keys) | **Installer:** `New-Object Net.Webclient`.<br><br>**.NET:** “.NET Framework is dependent on `Schannel` on Windows”.<br><br>**Incident response:** “Windows Disallowed Certificate Trust List to block the affected certificate authorities”. |
+| **uv coverage:** versions before 0.13.4 use an affected default bundle. 0.13.4 removes the root; 0.13.5 adds blocking of the compromised intermediate keys. 0.13.6 includes both fixes. | [Astral’s incident advisory](https://github.com/astral-sh/uv/security/advisories/GHSA-hq85-5cpj-mr62)<br><br>[0.13.5 security release](https://github.com/astral-sh/uv/releases/tag/0.13.5) | **Advisory:** “uv 0.13.4 removes this root CA from its vendored CA bundle”.<br><br>**Release:** “Reject certificate chains containing compromised eMudhra intermediate keys”. |
 
-**Limits and follow-up.** The refreshed starter pip is different from the later Python-level key block in 08. Existing environments and exact old interpreter paths may remain unchanged. Do not delete old Python folders while environments reference them. A uv-managed Python can remain after uv was removed.
+**Older standalone versions:** Our minimum of 0.11.2 for this update route comes from [Astral’s release notes](https://github.com/astral-sh/uv/blob/main/changelogs/0.11.x.md#0112): “Use uv reqwest client for self update”. This is our compatibility boundary, not a cutoff stated in the incident advisory. For earlier versions, obtain the [official installer](https://docs.astral.sh/uv/getting-started/installation/#standalone-installer) through the protected browser in [02](#02-browsers); on macOS, complete 03 before running it.
 
-Sources: [uv update instructions](https://docs.astral.sh/uv/getting-started/installation/), [uv 0.13.5 incident fixes](https://github.com/astral-sh/uv/releases/tag/0.13.5), [managed Python upgrade behavior](https://docs.astral.sh/uv/concepts/python-versions/).
+**Scope:** This assessment covers standard installations and is based on maintainer guidance and source inspection, not execution tests. Separately installed curl or custom certificate files need their own protection. Self-update can change shell/PATH settings.
 
-[Back to action 07](#07-uv-and-the-python-copies-it-manages)
+[Back to action 07](#07-uv)
 
 ### A08. Python installations
 
@@ -761,6 +762,14 @@ Sources: [uv update instructions](https://docs.astral.sh/uv/getting-started/inst
 **What this fixes.** The fixed Python ssl verifier blocks the compromised keys. Ordinary users of that module, including normal pip connections, gain that protection even if an old root remains in a separate CA file.
 
 **Limits and follow-up.** Native extensions or other executables can use another verifier. Older unsupported Python needs a maintained build/migration. Exact venv paths and Jupyter kernels can keep another interpreter: check inside the notebook and restart it. Upstream versions and distributor backports are alternative evidence, not interchangeable version-number guesses.
+
+**uv guidance checked: 27 October 2026.**
+
+| Claim | Sources | Quotes |
+| --- | --- | --- |
+| **uv-managed Python coverage:** update uv first, then run `uv python upgrade`. 0.13.6 supplies the fixed Python releases listed in 08; refreshed Python 3.11+ builds also include corrected pip and ensurepip bundles. | [0.13.6 Python builds](https://github.com/astral-sh/uv/releases/tag/0.13.6)<br><br>[Astral’s incident instructions for Python](https://github.com/astral-sh/uv/releases/tag/0.13.5)<br><br>[Upgrade command and scope](https://docs.astral.sh/uv/concepts/python-versions/#upgrading-python-versions) | **0.13.6:** “Add CPython 3.11.18, 3.12.16, 3.13.18, 3.14.10, and 3.15.2”.<br><br>**Incident instructions:** “After upgrading uv, run `uv python upgrade`”; “pip 26.2.2”; “bundled with `ensurepip`”.<br><br>**Scope:** “To upgrade all installed Python versions:”; `uv python upgrade`. |
+
+**uv-managed environments:** Python upgrades stay within each installed release line and retain old copies that environments may still use. Exact patch pins do not move automatically; existing environments need their own pip update. Do not delete old Python folders while environments reference them.
 
 Sources: [official release/download pages](https://www.python.org/downloads/), [Python’s fixed-runtime announcement](https://discuss.python.org/t/python-3-15-2-3-14-10-3-13-18-3-12-16-and-3-11-18-are-out/109678), [Conda install/version constraints](https://docs.conda.io/projects/conda/en/stable/commands/install.html), [uv Python upgrades](https://docs.astral.sh/uv/concepts/python-versions/).
 
@@ -772,7 +781,7 @@ Sources: [official release/download pages](https://www.python.org/downloads/), [
 
 **What this fixes.** pip 26.2.2 replaces its included certifi. OS certificate edits alone do not remove the old copy inside pip; updating importable application certifi also does not update pip’s copy.
 
-**Limits and follow-up.** The system/custom CA configuration still needs checking. Include Conda, .venv, tox/nox, user installs, isolated tools and notebook kernels. ensurepip/virtualenv can create another old pip later; use 07/08/15 or repeat the verified first update in that new environment. Do not add persistent sitecustomize/CA overrides as an assumed fix.
+**Limits and follow-up.** The system/custom CA configuration still needs checking. Include Conda, .venv, tox/nox, user installs, isolated tools and notebook kernels. ensurepip/virtualenv can create another old pip later; use 08/15 or repeat the verified first update in that new environment. Do not add persistent sitecustomize/CA overrides as an assumed fix.
 
 Sources: [Python’s incident advisory and first-update command](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576), [pip’s upgrade instructions](https://pip.pypa.io/en/stable/installation/#upgrading-pip), [ensurepip documentation](https://docs.python.org/3/library/ensurepip.html), [pip release notes](https://pip.pypa.io/en/stable/news/), [pip HTTPS trust behavior](https://pip.pypa.io/en/stable/topics/https-certificates/), [pip checksum checks](https://pip.pypa.io/en/stable/topics/secure-installs/).
 
