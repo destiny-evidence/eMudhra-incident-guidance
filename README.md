@@ -17,7 +17,7 @@ Each row is a separate item. Its matching **A-number in Part 2** explains the sa
 | --- | --- | --- |
 | [01](#01-operating-system-certificate-protection) | Operating-system certificate protection | Everyone. |
 | [02](#02-browsers) | Browsers | Everyone: check the browser you use. Do not install all of these browsers. |
-| [03](#03-macos-command-line-certificates) | macOS command-line certificates | macOS users who run curl, Git, Python or similar tools from Terminal. |
+| [03](#03-macos-command-line-certificates) | macOS command-line certificates | You use Apple’s bundled curl, Git, Python or similar tools, supplied with macOS or Xcode Command Line Tools. |
 | [04](#04-homebrew) | Homebrew | You already use Homebrew on macOS. |
 | [05](#05-git-for-windows) | Git for Windows | Windows users with Git installed, including portable copies. |
 | [06](#06-conda-miniconda-anaconda-and-miniforge) | Conda, Miniconda, Anaconda and Miniforge | You use any of these Conda distributions. |
@@ -65,7 +65,7 @@ For official downloads, follow the browser guidance in 02. A normal update comma
 
 **No manual action is normally needed on Windows or macOS.** Certificate-blocking updates arrive automatically.
 
-If you use Terminal tools on macOS, also follow [03](#03-macos-command-line-certificates).
+For command-line tools supplied with macOS or Xcode Command Line Tools, see [03](#03-macos-command-line-certificates).
 
 [Evidence for automatic certificate protection → A01](#a01-operating-system-certificate-protection)
 
@@ -89,11 +89,15 @@ If you’d like to double-check, see the [optional browser checks in the appendi
 
 ### 03. macOS command-line certificates
 
-**Applies to:** macOS users who run curl, Git, Python or similar tools from Terminal.
+**Applies to:** macOS users who use Apple’s bundled versions of **curl, Git or Python (`python3`)**, including those supplied with Xcode Command Line Tools.
 
-**Before:** These commands edit a system file and may ask for your Mac login password.
+These bundled copies are separate from versions you install yourself, for example through Conda or uv. **Use the commands below only if you use the Apple-provided copies.** If you only use separately installed copies with their own certificate lists, skip this section and follow their update steps below.
 
-If both roots were already removed, skip to the check. Otherwise follow Apple’s commands in order.
+**Virtual environments:** one created from Apple’s Python still uses that bundled Python; creating an environment alone does not replace it with a separately installed Python.
+
+**Status — 26 October 2026:** Apple still describes the software fix as pending. These commands are its optional interim workaround.
+
+**Before:** You need an administrator account. Removing either root can disrupt some unrelated websites in these tools. Keep the backup and stop if any command reports an error.
 
 **1. Keep a backup:**
 
@@ -107,7 +111,7 @@ If both roots were already removed, skip to the check. Otherwise follow Apple’
 t=$(mktemp) && awk -v s='=== /C=IN/OU=emSign PKI/O=eMudhra Technologies Limited/CN=emSign ECC Root CA - G3' '/^(===|###) /{skip=0} $0==s{skip=1} !skip' /etc/ssl/cert.pem > "$t" && [ -s "$t" ] && sudo install -m 0644 -o root -g wheel "$t" /etc/ssl/cert.pem; rm -f "$t"
 ```
 
-**3. Remove AAA Certificate Services to cover the second trust route:**
+**3. Optional: remove AAA Certificate Services to block the affected cross-signed certificates too:**
 
 ```bash
 t=$(mktemp) && awk -v s='=== /C=GB/ST=Greater Manchester/L=Salford/O=Comodo CA Limited/CN=AAA Certificate Services' '/^(===|###) /{skip=0} $0==s{skip=1} !skip' /etc/ssl/cert.pem > "$t" && [ -s "$t" ] && sudo install -m 0644 -o root -g wheel "$t" /etc/ssl/cert.pem; rm -f "$t"
@@ -119,9 +123,9 @@ t=$(mktemp) && awk -v s='=== /C=GB/ST=Greater Manchester/L=Salford/O=Comodo CA L
 openssl crl2pkcs7 -nocrl -certfile /etc/ssl/cert.pem | openssl pkcs7 -print_certs -noout | grep -E 'emSign ECC Root CA - G3|AAA Certificate Services'
 ```
 
-**Expected:** no output. A certificate-file parsing error is a problem: follow Apple’s backup-restoration instructions. **Recheck after macOS updates until Apple’s permanent fix is installed.** Removing AAA can also stop some unrelated legitimate sites working in these tools.
+**Expected:** no output if both roots were removed. If you skipped 3, AAA Certificate Services may still appear. A certificate-file parsing error is a problem: follow Apple’s backup-restoration instructions. **Recheck after macOS updates until Apple’s permanent fix is installed.**
 
-[Why this update method is safe, and what it covers → A03](#a03-macos-command-line-certificates)
+[Evidence for this workaround and its limitations → A03](#a03-macos-command-line-certificates)
 
 ### 04. Homebrew
 
@@ -758,13 +762,15 @@ Existing pip-installed LiteLLM 1.106 example: `python -m pip install "litellm==1
 
 ### A03. macOS command-line certificates
 
-**Download safety and ordering.** The commands operate on files already on the Mac; they do not download an installer through the affected connection. They are the commands Apple publishes for this situation.
+**Checked: 26 October 2026.**
 
-**What this fixes.** Some Apple/Xcode command-line tools use /etc/ssl/cert.pem without applying the framework’s certificate block. Removing both emSign G3 and AAA blocks the relevant direct and cross-signed routes in that file.
-
-**Limits and follow-up.** Apple calls this an immediate optional mitigation while its permanent software update is pending. Removing AAA affects unrelated chains too. A macOS update can replace the file; follow Apple’s recheck/backup instructions until the permanent fix has shipped. Separate pip and app bundles are not repaired by this edit. The final grep returning status 1 means no match and is expected; a parser error is different.
-
-Sources: [Apple’s commands and limitations](https://support.apple.com/en-us/149555).
+| Claim | Sources | Quotes |
+| --- | --- | --- |
+| **Command provenance:** all four commands in 03 match Apple’s published eMudhra response exactly: backup, two root removals and verification, in that order. | [Apple’s incident instructions, steps 1–4](https://support.apple.com/en-us/149555) | “Copy each command exactly as written.” |
+| **Download safety — command inspection:** the commands use installed tools to back up, edit and check local files. They do not download software or certificates, so executing this repair does not depend on an affected HTTPS connection. | [Apple’s complete command sequence, inspected for downloads](https://support.apple.com/en-us/149555) | Local-file excerpt: `cp -p /etc/ssl/cert.pem`. The no-download conclusion comes from inspecting the complete sequence. |
+| **Protection provided:** removing emSign G3 and AAA Certificate Services blocks the affected direct and cross-signed TLS chains through this file. Step 2 alone leaves the cross-signed route. | [Apple’s explanation and removal steps 2–3](https://support.apple.com/en-us/149555) | “also remove AAA Certificate Services” |
+| **Affected versions:** Apple-provided tools that check certificates against `/etc/ssl/cert.pem`, including curl, Git and Python. | [Apple’s affected-tool guidance](https://support.apple.com/en-us/149555) | “macOS or the Xcode Command Line Tools” |
+| **Fix pending:** Apple still describes the permanent software fix as forthcoming; these commands are its interim mitigation. | [Apple’s incident guidance](https://support.apple.com/en-us/149555) | “future software update” |
 
 [Back to action 03](#03-macos-command-line-certificates)
 
