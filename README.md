@@ -11,7 +11,7 @@ Read the operating-system and browser guidance, then find your tools in the list
 
 ### Order of work
 
-Each row is a separate item. Sections 01–28 have matching **A-numbers in Part 2**, explaining the safety of the update method, its place in the order, and what it fixes. Section 29 lists other tools without update instructions.
+Each row is a separate item. Sections 01–27 have matching **A-numbers in Part 2**, explaining the safety of the update method, its place in the order, and what it fixes. Section 28 lists other tools without update instructions.
 
 | Step | Tool or task | Only applies if… |
 | --- | --- | --- |
@@ -26,24 +26,23 @@ Each row is a separate item. Sections 01–28 have matching **A-numbers in Part 
 | [09](#09-pip-in-each-python-environment) | pip in each Python environment | You install packages with pip. Repeat in each environment you use. |
 | [10](#10-python-certificate-packages-in-each-environment) | Python certificate packages in each environment | An environment uses certifi or Conda ca-certificates for downloads/API calls. |
 | [11](#11-nodejs-npmnpx-yarn-pnpm-and-corepack) | Node.js, npm/npx, Yarn, pnpm and Corepack | You use Node, npm/npx, Yarn, pnpm or Corepack, including project-selected copies. |
-| [12](#12-pipenv) | Pipenv | You use Pipenv. |
-| [13](#13-python-tools-installed-in-separate-environments) | Python tools installed in separate environments | You use pipx, uv tools/uvx, Poetry, PDM, Hatch, pip-tools, tox or nox. |
-| [14](#14-project-version-files-and-saved-environments) | Project version files and saved environments | You maintain project requirements, lockfiles, runtime settings or CI caches. |
-| [15](#15-virtualenv-the-tool-that-creates-python-environments) | virtualenv: the tool that creates Python environments | You use virtualenv directly or through pre-commit/tox/nox. |
-| [16](#16-pre-commit-recreate-saved-hook-environments) | pre-commit: recreate saved hook environments | You use pre-commit in a project or CI. |
-| [17](#17-code-editors-and-ai-coding-tools) | Code editors and AI coding tools | You use one of the listed apps. Update only yours. |
-| [18](#18-development-and-cloud-command-line-tools) | Development and cloud command-line tools | You use gh, Git LFS, Azure CLI, AWS CLI, gcloud, or separately installed curl/OpenSSL tools. |
-| [19](#19-docker-desktop-and-container-images) | Docker Desktop and container images | You use Docker or development containers. |
-| [20](#20-wsl-remote-machines-azure-ml-and-ci) | WSL, remote machines, Azure ML and CI | Your code runs in these places, or you maintain their environments. |
-| [21](#21-electron-apps-your-team-develops) | Electron apps your team develops | You build and distribute an Electron app; otherwise skip. |
-| [22](#22-python-publishing-and-signing-tools) | Python publishing and signing tools | You publish packages with Twine, Sigstore or PyPA’s publishing Action. |
-| [23](#23-python-apps-that-make-https-connections) | Python apps that make HTTPS connections | Your programs use Requests, HTTPX, SDKs or other HTTP libraries. |
-| [24](#24-hugging-face-and-extra-model-downloaders) | Hugging Face and extra model downloaders | You use huggingface_hub, hf_xet, Transformers or Datasets downloads. |
-| [25](#25-llm-api-libraries-agent-frameworks-and-mcp-servers) | LLM API libraries, agent frameworks and MCP servers | You use provider SDKs, LangChain, LlamaIndex, LiteLLM or MCP services. |
-| [26](#26-ollama-lm-studio-and-other-local-llm-apps) | Ollama, LM Studio and other local LLM apps | You use one of these local model apps. |
-| [27](#27-inference-training-evaluation-and-notebooks) | Inference, training, evaluation and notebooks | You run vLLM, SGLang, Transformers, llama.cpp, notebooks or cloud/GPU jobs. |
-| [28](#28-running-services-workers-and-scheduled-jobs) | Running services, workers and scheduled jobs | You maintain deployed apps, background workers, agents or scheduled jobs. |
-| [29](#29-other-tools) | Other tools | You use one of the additional tools listed. |
+| [12](#12-project-version-files-and-saved-environments) | Project version files and saved environments | You maintain project requirements, lockfiles, runtime settings or CI caches. |
+| [13](#13-virtualenv-the-tool-that-creates-python-environments) | virtualenv: the tool that creates Python environments | People who use pre-commit, tox or nox (which normally use virtualenv), or virtualenv directly. |
+| [14](#14-pre-commit-recreate-saved-hook-environments) | pre-commit: recreate saved hook environments | You use pre-commit in a project or CI. |
+| [15](#15-code-editors-and-ai-coding-tools) | Code editors and AI coding tools | You use one of the listed apps. Update only yours. |
+| [16](#16-development-and-cloud-command-line-tools) | Development and cloud command-line tools | You use gh, Git LFS, Azure CLI, AWS CLI, gcloud, or separately installed curl/OpenSSL tools. |
+| [17](#17-docker-desktop-and-container-images) | Docker Desktop and container images | You use Docker or development containers. |
+| [18](#18-wsl-remote-machines-azure-ml-and-ci) | WSL, remote machines, Azure ML and CI | Your code runs in these places, or you maintain their environments. |
+| [19](#19-electron-apps-your-team-develops) | Electron apps your team develops | You build and distribute an Electron app; otherwise skip. |
+| [20](#20-python-publishing-and-signing-tools) | Python publishing and signing tools | You publish packages with Twine, Sigstore or PyPA’s publishing Action. |
+| [21](#21-python-apps-that-make-https-connections) | Python apps that make HTTPS connections | Your programs use Requests, HTTPX, SDKs or other HTTP libraries. |
+| [22](#22-hugging-face-and-extra-model-downloaders) | Hugging Face and extra model downloaders | You use huggingface_hub, hf_xet, Transformers or Datasets downloads. |
+| [23](#23-llm-api-libraries-agent-frameworks-and-mcp-servers) | LLM API libraries, agent frameworks and MCP servers | You use provider SDKs, LangChain, LlamaIndex, LiteLLM or MCP services. |
+| [24](#24-ollama-lm-studio-and-other-local-llm-apps) | Ollama, LM Studio and other local LLM apps | You use one of these local model apps. |
+| [25](#25-inference-training-evaluation-and-notebooks) | Inference, training, evaluation and notebooks | You run vLLM, SGLang, Transformers, llama.cpp, notebooks or cloud/GPU jobs. |
+| [26](#26-running-services-workers-and-scheduled-jobs) | Running services, workers and scheduled jobs | You maintain deployed apps, background workers, agents or scheduled jobs. |
+| [27](#27-python-tools-installed-in-separate-environments) | Python tools installed in separate environments | You use uv tools/uvx, Poetry, PDM, Hatch, pip-tools, tox or nox in an environment separate from your projects. |
+| [28](#28-other-tools) | Other tools | You use one of the additional tools listed. |
 
 ### Before running commands
 
@@ -192,11 +191,16 @@ For direct installations, check `uv --version` first. If it is below **0.11.2**,
 
 ### 08. Python installations
 
-**Applies to:** You run Python, including through Conda, uv, Homebrew or python.org.
+> [!IMPORTANT]
+> **These instructions do not apply to Python bundled with macOS or Xcode Command Line Tools.** Apple’s certificate fix for those command-line tools is still awaiting a macOS update. See [A03’s explanation and workaround guidance](#a03-macos-command-line-certificates).
 
-**Before:** Update its supplier first: Conda 06, Homebrew 04, or uv 07. Use 02 for official installers.
+**Applies to:** People who use Python installed through Conda, uv, Homebrew or python.org.
 
-| Python line | First fixed upstream version |
+**Before:** Complete the relevant update first: [Conda 06](#06-conda-miniconda-anaconda-and-miniforge), [Homebrew 04](#04-homebrew), or [uv 07](#07-uv).
+
+Update each Python installation you use, keeping the same release line (for example, 3.12 stays on 3.12).
+
+| Python line | Minimum version with the certificate-key block |
 | --- | --- |
 | 3.11 | 3.11.18 |
 | 3.12 | 3.12.16 |
@@ -204,66 +208,49 @@ For direct installations, check `uv --version` first. If it is below **0.11.2**,
 | 3.14 | 3.14.10 |
 | 3.15 | 3.15.2 |
 
-| How installed | Update |
+| How Python was installed | Update — choose the matching method |
 | --- | --- |
-| Conda, existing Python 3.12 example | `conda install --name myenv "python>=3.12.16,<3.13"` |
-| Downloaded by uv | `uv python upgrade` |
-| python.org, 3.14/3.15 | Run the current [python.org installer](https://www.python.org/downloads/) for your existing release line. |
-| Homebrew/other supplier | Update the same versioned package; require the fix or a documented backport. |
+| Downloaded by uv | **Run once to update all Python versions downloaded by uv.**<br><br>`uv python upgrade` |
+| Conda — Python 3.12 example | **Run for each Conda environment you use, including `base`.** Replace `myenv` with its name.<br><br>`conda install --name myenv "python>=3.12.16,<3.13"` |
+| Homebrew — example for existing Python 3.12 | `brew upgrade python@3.12` |
+| python.org — Python 3.14 or 3.15 | Run the official [3.14.10 installer](https://www.python.org/downloads/release/python-31410/) or [3.15.2 installer](https://www.python.org/downloads/release/python-3152/), matching your existing release line. |
 
-**Check which Python you are using:**
-```bash
-python -c "import sys; print(sys.executable); print(sys.version)"
-```
+**Existing uv environments:** Those tied to an exact older Python version may keep using it and need a separate environment update. Project version settings and lockfiles are covered in [12](#12-project-version-files-and-saved-environments).
 
-The Python project’s **3.11–3.13 releases are source-only**; use your supplier’s corrected package rather than looking for a new python.org installer. Do not replace Apple’s Python or change release lines just to copy an example.
+Python 3.10 or older no longer receives upstream fixes. Get help choosing a supported build if your existing supplier cannot provide the fix; do not change release lines just to copy an example.
 
-[Why this update method is safe, and what it covers → A08](#a08-python-installations)
+[Update evidence and download protection → A08](#a08-python-installations)
 
 ### 09. pip in each Python environment
 
-**Applies to:** You install packages with pip. Repeat in each environment you use.
+> [!IMPORTANT]
+> **These instructions do not apply to pip bundled with Apple/Xcode’s Python.** Apple’s macOS certificate update for command-line tools is still pending; its notice does not confirm a fix for bundled pip. See [A09’s explanation](#apples-bundled-pip).
 
-**Before:** Activate the intended environment. Do not update only base and assume other environments changed.
+**Applies to:** People who use pip in separately managed Python installations or environments. **Repeat in each environment you use.**
 
-**If pip is already ≥26.2.2, check its configuration; do not reinstall an older version.** Otherwise choose one route:
+**Before:** Activate the environment and complete its Python update in [08](#08-python-installations). If that environment’s Python has not received the fix, or you are unsure, use [A09’s alternative update](#pip-update-before-the-python-fix) instead.
 
-**A. Python already has the confirmed key-block fix from 08:**
+Run:
 
 ```bash
 python -m pip install --upgrade pip
 ```
 
-**B. That Python fix is not confirmed: use the advisory’s checksum-checked first update:**
-
-```bash
-python -m pip install "pip @ https://files.pythonhosted.org/packages/3f/06/3e4420302363fbb71be3c7f35ce042f54bfca330e3e66b3a2e3c4cca579f/pip-26.2.2-py3-none-any.whl#sha256=fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70"
-```
-
-**Check:**
-
-```bash
-python -m pip --version
-```
-
-**Target:** pip **≥26.2.2**. This requires Python **≥3.10**. Use a maintained development Python for older Apple/Xcode pip; do not use `sudo pip` or edit Apple’s Python.
-
-[Why this update method is safe, and what it covers → A09](#a09-pip-in-each-python-environment)
+[Update evidence and download protection → A09](#a09-pip-in-each-python-environment)
 
 ### 10. Python certificate packages in each environment
 
-**Applies to:** An environment uses certifi or Conda ca-certificates for downloads/API calls.
+**Applies to:** People whose Python environments use `certifi` or Conda’s `ca-certificates` to connect to websites or services. **Repeat for each environment you use.** Skip environments that use neither package.
 
-**Before:** For pip, complete 09. For Conda, complete 06. Choose the installer that owns the existing package.
+**Before:** For pip, complete [09](#09-pip-in-each-python-environment) in that environment. For Conda, complete [06](#06-conda-miniconda-anaconda-and-miniforge). Use the same installer and channel as the existing package.
 
-**pip-installed certifi:**
+**pip-installed certifi — activate the environment, then run:**
 
 ```bash
 python -m pip install --upgrade "certifi>=2026.10.19"
-python -m pip show certifi
 ```
 
-**Conda environment: choose its existing channel and replace `myenv`:**
+**Conda — choose the environment’s existing channel and replace `myenv` with its name. Run for each environment:**
 
 ```bash
 # conda-forge
@@ -275,85 +262,54 @@ conda install --name myenv --override-channels --channel conda-forge "certifi>=2
 conda install --name myenv --override-channels --channel defaults "certifi>=2026.10.19" "ca-certificates>=2026.10.20"
 ```
 
-Repeat for each used environment. Do not install unused certifi, replace a Conda-owned copy with pip, or switch channels for this checklist.
+Do not replace a Conda-installed package with pip. If an older Python or unsupported platform prevents the update, see [A10’s compatibility note](#a10-python-certificate-packages-in-each-environment).
 
-[Why this update method is safe, and what it covers → A10](#a10-python-certificate-packages-in-each-environment)
+[Update evidence and download protection → A10](#a10-python-certificate-packages-in-each-environment)
 
 ### 11. Node.js, npm/npx, Yarn, pnpm and Corepack
 
-**Applies to:** You use Node, npm/npx, Yarn, pnpm or Corepack, including project-selected copies.
+**Applies to:** People who use Node.js, npm/npx, Yarn, pnpm or Corepack. Update each Node installation or environment you use.
 
-**Before:** Use 04 for Homebrew, 06 for Conda, or a verified official download via 02. Other version-manager downloaders must be confirmed protected.
+**Before:** Complete [04](#04-homebrew) for Homebrew or [06](#06-conda-miniconda-anaconda-and-miniforge) for Conda. For NVM, follow [01](#01-operating-system-certificate-protection) and, if [03](#03-macos-command-line-certificates) applies, complete **both root removals** there first. Download official installers through the browser described in [02](#02-browsers).
 
-| Existing Node line | Minimum fixed |
+| Existing Node line | Minimum fixed version |
 | --- | --- |
 | 22 | 22.23.4 |
 | 24 | 24.22.1 |
 | 26 | 26.12.1 |
 
-**Existing Node 24 examples — choose only the method you use:**
+Use your existing installation method. The command examples below are for **Node 24**; use the corresponding fixed version for your existing line. Older, unsupported Node lines need a supported replacement.
 
 | Installed with | Update |
 | --- | --- |
-| Official installer | Run the current [official Node 24 installer](https://nodejs.org/en/download). |
-| Conda | `conda install --name myenv "nodejs>=24.22.1,<25"` |
-| Homebrew node@24 | `brew upgrade node@24` |
-| nvm, macOS/Linux/WSL | `nvm install 24` then `nvm use 24` |
-| nvm-windows | `nvm install 24.22.1` then `nvm use 24.22.1`, or the later fixed 24.x equivalent |
-| fnm | `fnm install 24` then `fnm use 24` |
-| Volta | `volta install node@24`; check project settings too |
+| Official installer | Run the installer for your system from the fixed release: [Node 22](https://nodejs.org/en/blog/release/v22.23.4/), [Node 24](https://nodejs.org/en/blog/release/v24.22.1/) or [Node 26](https://nodejs.org/en/blog/release/v26.12.1/). |
+| Conda — repeat for each Node environment; replace `myenv` | `conda install --name myenv "nodejs>=24.22.1,<25"` |
+| Homebrew `node@24` | `brew upgrade node@24` |
+| NVM | `nvm install 24` then `nvm use 24` |
 
-**Check in the environment/editor you use:**
-```bash
-node -p "process.version + ' ' + process.execPath"
-npm --version
-```
+For fnm or Volta, have the maintainer confirm the downloader’s protection first; see [A11](#a11-nodejs-npmnpx-yarn-pnpm-and-corepack).
 
-Normal JavaScript npm/npx/Yarn/pnpm/Corepack using that Node inherit its fix. **Self-contained pnpm 12 needs its own confirmation; see A11.** Do not change Node major versions just to copy this table.
+Restart programs using Node. In each environment or editor terminal, check `node --version` against the minimum above. npm/npx, Yarn, Corepack and the JavaScript versions of pnpm inherit the fix **when they run on that updated Node**.
 
-[Why this update method is safe, and what it covers → A11](#a11-nodejs-npmnpx-yarn-pnpm-and-corepack)
+**Standalone pnpm needs its own update.** For pnpm 10/11 with a bundled Node runtime, use **10.34.8 / 11.28.8 or later** in the same line. For native pnpm 12, use **12.15.0 or later**; A11 explains the source evidence for this target. Use your original installation method:
 
-### 12. Pipenv
-
-**Applies to:** You use Pipenv.
-
-**Before:** Protect the pip/pipx environment running the update: 09 and, for pipx, 13.
-
-| Installed with | Update |
+| pnpm installation | Update |
 | --- | --- |
-| pipx | `pipx upgrade pipenv` |
-| pip | `python -m pip install --upgrade "pipenv>=2026.10.2"` |
+| pnpm 12 installed with npm — update Node above first | `npm install -g "pnpm@^12.15.0"` |
+| pnpm 12 installed with Homebrew — complete 04 first | `brew upgrade pnpm` |
+| Standalone installer | Rerun [pnpm’s official installer](https://github.com/pnpm/get.pnpm.io#configuring), setting `PNPM_VERSION` to the matching version above. Apple’s curl needs both root removals in [03](#03-macos-command-line-certificates) first; Windows PowerShell uses [01](#01-operating-system-certificate-protection). Other downloaders need their own confirmed protection. |
 
-**Check:** `pipenv --version` is **≥2026.10.2**. Check the project environment separately using 09–10.
+Reopen the terminal and check `pnpm --version` if you updated pnpm. Project version pins are covered separately in [12](#12-project-version-files-and-saved-environments).
 
-[Why this update method is safe, and what it covers → A12](#a12-pipenv)
+[Update evidence and download protection → A11](#a11-nodejs-npmnpx-yarn-pnpm-and-corepack)
 
-### 13. Python tools installed in separate environments
-
-**Applies to:** You use pipx, uv tools/uvx, Poetry, PDM, Hatch, pip-tools, tox or nox.
-
-**Before:** Protect the actual installation backend first: pip 09, uv 07, or the existing package manager.
-
-| Installation | Do this |
-| --- | --- |
-| pipx | Inspect `pipx list --skip-maintenance`. Repair its shared pip if needed (A13), then `pipx upgrade-shared`. Update the relevant app with `pipx upgrade APP`. |
-| Packages inside a pipx app | Inspect `pipx runpip --skip-maintenance APP show pip certifi virtualenv`. Update only used affected packages via that environment’s Python or `pipx runpip`. |
-| uv tools | `uv tool list`; update an existing certifi dependency with `uv tool upgrade APP --upgrade-package certifi`. Refresh affected saved uvx environments. |
-| Poetry installed directly | `poetry self update`; on Windows follow the original installer’s method because Poetry warns about self commands there. |
-| Other pip/pipx-installed tools | Update the relevant tool with the same installer, e.g. `pipx upgrade tox` or `python -m pip install --upgrade tox`. |
-| App including its own Python | Update the whole vendor distribution; a project’s pip cannot edit that separate copy safely. |
-
-Replace `APP` with the installed app’s name. **Check its own Python, pip, certifi and virtualenv where used**, not just the managed project.
-
-[Why this update method is safe, and what it covers → A13](#a13-python-tools-installed-in-separate-environments)
-
-### 14. Project version files and saved environments
+### 12. Project version files and saved environments
 
 **Applies to:** You maintain project requirements, lockfiles, runtime settings or CI caches.
 
-**Before:** Fix the installer/runtime that will regenerate the files first.
+**Before:** Fix the installer/runtime that will regenerate the files first. If the project tool has its own environment, complete [27](#27-python-tools-installed-in-separate-environments) for that tool before using it here.
 
-1. Correct active requirements that would reinstall an affected version.
+1. Correct active requirements that would reinstall an affected version. For Python, update any old version pins in `.python-version`, `pyproject.toml` or environment definitions to allow a [fixed version from 08](#08-python-installations). Refresh affected lockfiles with the project’s usual tool.
 2. Use the existing project tool to update affected packages, not every dependency:
 
 | Project tool | Existing certifi example |
@@ -365,48 +321,45 @@ Replace `APP` with the installed app’s name. **Check its own Python, pip, cert
 
 3. Refresh affected tool/image caches after fixing their source settings. Keep unrelated data and historical experiment records.
 
-[Why this update method is safe, and what it covers → A14](#a14-project-version-files-and-saved-environments)
+[Why this update method is safe, and what it covers → A12](#a12-project-version-files-and-saved-environments)
 
-### 15. virtualenv: the tool that creates Python environments
+### 13. virtualenv: the tool that creates Python environments
 
-**Applies to:** You use virtualenv directly or through pre-commit/tox/nox.
+**Applies to:** People who use pre-commit, tox or nox (which normally use virtualenv), or virtualenv directly.
 
-**Before:** Protect pip/the package manager in the environment running virtualenv first.
+**Before:** Update your package manager, for example [09](#09-pip-in-each-python-environment) for pip or [06](#06-conda-miniconda-anaconda-and-miniforge) for Conda.
 
-**If installed with pip:**
+**Repeat for each environment where pre-commit, tox, nox or virtualenv is installed.** Activate that environment, then use your existing installer to update virtualenv to **21.14.12 or later**. For example, with pip:
 
 ```bash
 python -m pip install --upgrade "virtualenv>=21.14.12"
-python -m virtualenv --version
 ```
 
-For Conda/pipx, use that existing installer. **Target: ≥21.14.12.** Update it where it actually runs, then recreate affected environments using 16.
+[Update evidence and download protection → A13](#a13-virtualenv-the-tool-that-creates-python-environments)
 
-[Why this update method is safe, and what it covers → A15](#a15-virtualenv-the-tool-that-creates-python-environments)
+### 14. pre-commit: recreate saved hook environments
 
-### 16. pre-commit: recreate saved hook environments
+**Applies to:** People who use pre-commit in a project or CI. Skip this section if you do not.
 
-**Applies to:** You use pre-commit in a project or CI.
+**Before:** Complete the applicable Git steps in [03](#03-macos-command-line-certificates)/[05](#05-git-for-windows), and update pre-commit’s own Python and virtualenv using [08](#08-python-installations) and [13](#13-virtualenv-the-tool-that-creates-python-environments). Correct old runtime settings using [12](#12-project-version-files-and-saved-environments).
 
-**Before:** Complete 05/03 as applicable, 15, and 14 for any old runtime settings. Protect Node/Go downloaders too.
-
-**Once, clear the affected saved environments:**
+**1. Clear pre-commit’s shared cache once.** This removes saved hook environments for all projects using that cache:
 
 ```bash
 pre-commit clean
 ```
 
-**Then in each project with `.pre-commit-config.yaml`:**
+**2. In each project you use that has `.pre-commit-config.yaml`, rebuild its hook environments:**
 
 ```bash
 pre-commit install-hooks
 ```
 
-Check pip, Node and Go versions **inside the recreated hook environments**. Use pip ≥26.2.2, the relevant Node minimum in 11, and Go **1.26.10 / 1.27.3** on those lines or a confirmed backport. **Leave hook versions unchanged.**
+Keep the existing hook revisions. If you use pre-commit in CI, refresh its saved cache too; see [18](#18-wsl-remote-machines-azure-ml-and-ci).
 
-[Why this update method is safe, and what it covers → A16](#a16-pre-commit-recreate-saved-hook-environments)
+[Rebuild evidence and version checks → A14](#a14-pre-commit-recreate-saved-hook-environments)
 
-### 17. Code editors and AI coding tools
+### 15. Code editors and AI coding tools
 
 **Applies to:** You use one of the listed apps. Update only yours.
 
@@ -423,11 +376,11 @@ Check pip, Node and Go versions **inside the recreated hook environments**. Use 
 | Claude Code, direct install | `claude update`, then restart and check `claude --version`. |
 | Claude Code, package manager | `brew upgrade claude-code` (keep your existing channel) or `winget upgrade Anthropic.ClaudeCode`. |
 
-**After updating:** check separately downloaded runtimes, extensions/MCP servers and remote copies. **For tools without a confirmed fixed version, leave the certificate check pending; updating the app alone is not proof.** See the per-tool table in A17.
+**After updating:** check separately downloaded runtimes, extensions/MCP servers and remote copies. **For tools without a confirmed fixed version, leave the certificate check pending; updating the app alone is not proof.** See the per-tool table in A15.
 
-[Why this update method is safe, and what it covers → A17](#a17-code-editors-and-ai-coding-tools)
+[Why this update method is safe, and what it covers → A15](#a15-code-editors-and-ai-coding-tools)
 
-### 18. Development and cloud command-line tools
+### 16. Development and cloud command-line tools
 
 **Applies to:** You use gh, Git LFS, Azure CLI, AWS CLI, gcloud, or separately installed curl/OpenSSL tools.
 
@@ -444,9 +397,9 @@ Check pip, Node and Go versions **inside the recreated hook environments**. Use 
 
 Do not edit a vendor’s private Python using your project’s pip. **For the unconfirmed rows, normal “latest” status is not a completed certificate check.**
 
-[Why this update method is safe, and what it covers → A18](#a18-development-and-cloud-command-line-tools)
+[Why this update method is safe, and what it covers → A16](#a16-development-and-cloud-command-line-tools)
 
-### 19. Docker Desktop and container images
+### 17. Docker Desktop and container images
 
 **Applies to:** You use Docker or development containers.
 
@@ -462,9 +415,9 @@ docker build --pull --no-cache -t TEAM_IMAGE:PATCHED .
 
 4. Recreate containers and deploy the new image. Updating Desktop does not repair an old image or running container.
 
-[Why this update method is safe, and what it covers → A19](#a19-docker-desktop-and-container-images)
+[Why this update method is safe, and what it covers → A17](#a17-docker-desktop-and-container-images)
 
-### 20. WSL, remote machines, Azure ML and CI
+### 18. WSL, remote machines, Azure ML and CI
 
 **Applies to:** Your code runs in these places, or you maintain their environments.
 
@@ -481,9 +434,9 @@ docker build --pull --no-cache -t TEAM_IMAGE:PATCHED .
 | Self-hosted runners | Update the runner app **and** its OS/development tools; run fresh jobs on the corrected setup. |
 | pre-commit CI cache | Correct its inputs, then remove only the affected cache under **Actions → Caches**, or change its key. Keep hook versions unchanged. |
 
-[Why this update method is safe, and what it covers → A20](#a20-wsl-remote-machines-azure-ml-and-ci)
+[Why this update method is safe, and what it covers → A18](#a18-wsl-remote-machines-azure-ml-and-ci)
 
-### 21. Electron apps your team develops
+### 19. Electron apps your team develops
 
 **Applies to:** You build and distribute an Electron app; otherwise skip.
 
@@ -502,13 +455,13 @@ npm install --save-dev electron@43.8.1
 
 Use a later fixed supported release on your line if appropriate. Update the lockfile, rebuild/sign/distribute the app, and test the delivered build.
 
-[Why this update method is safe, and what it covers → A21](#a21-electron-apps-your-team-develops)
+[Why this update method is safe, and what it covers → A19](#a19-electron-apps-your-team-develops)
 
-### 22. Python publishing and signing tools
+### 20. Python publishing and signing tools
 
 **Applies to:** You publish packages with Twine, Sigstore or PyPA’s publishing Action.
 
-**Before:** Protect the environment doing the publishing using 08–10; CI downloads follow 20.
+**Before:** Protect the environment doing the publishing using 08–10; CI downloads follow 18.
 
 | Tool | Do this |
 | --- | --- |
@@ -520,9 +473,9 @@ Use a later fixed supported release on your line if appropriate. Update the lock
 - uses: pypa/gh-action-pypi-publish@v1.14.3
 ```
 
-[Why this update method is safe, and what it covers → A22](#a22-python-publishing-and-signing-tools)
+[Why this update method is safe, and what it covers → A20](#a20-python-publishing-and-signing-tools)
 
-### 23. Python apps that make HTTPS connections
+### 21. Python apps that make HTTPS connections
 
 **Applies to:** Your programs use Requests, HTTPX, SDKs or other HTTP libraries.
 
@@ -532,9 +485,9 @@ Use a later fixed supported release on your line if appropriate. Update the lock
 2. Have the maintainer check custom certificate files/settings.
 3. Restart/redeploy, then test the application’s own connection library—not just curl.
 
-[Why this update method is safe, and what it covers → A23](#a23-python-apps-that-make-https-connections)
+[Why this update method is safe, and what it covers → A21](#a21-python-apps-that-make-https-connections)
 
-### 24. Hugging Face and extra model downloaders
+### 22. Hugging Face and extra model downloaders
 
 **Applies to:** You use huggingface_hub, hf_xet, Transformers or Datasets downloads.
 
@@ -544,11 +497,11 @@ Use a later fixed supported release on your line if appropriate. Update the lock
 python -m pip show huggingface-hub hf-xet transformers datasets
 ```
 
-Apply 23 to Python connections. Check the vendor’s fix for extra downloaders such as **hf_xet**, then update through the project’s normal protected workflow if needed. **No fixed/vulnerable hf_xet version was confirmed here: leave that check pending rather than assuming certifi repaired it.**
+Apply 21 to Python connections. Check the vendor’s fix for extra downloaders such as **hf_xet**, then update through the project’s normal protected workflow if needed. **No fixed/vulnerable hf_xet version was confirmed here: leave that check pending rather than assuming certifi repaired it.**
 
-[Why this update method is safe, and what it covers → A24](#a24-hugging-face-and-extra-model-downloaders)
+[Why this update method is safe, and what it covers → A22](#a22-hugging-face-and-extra-model-downloaders)
 
-### 25. LLM API libraries, agent frameworks and MCP servers
+### 23. LLM API libraries, agent frameworks and MCP servers
 
 **Applies to:** You use provider SDKs, LangChain, LlamaIndex, LiteLLM or MCP services.
 
@@ -556,7 +509,7 @@ Apply 23 to Python connections. Check the vendor’s fix for extra downloaders s
 
 | Used component | Do this |
 | --- | --- |
-| Python library using certifi | Follow 23 in that environment. |
+| Python library using certifi | Follow 21 in that environment. |
 | JavaScript library/MCP server using normal Node HTTPS | Follow 11 for the Node actually running it. |
 | Separate downloader / included runtime | Require its own vendor fix or connection verification. |
 | boto3 / Bedrock | Use **botocore ≥1.43.117** with compatible boto3, through the existing project workflow. |
@@ -564,9 +517,9 @@ Apply 23 to Python connections. Check the vendor’s fix for extra downloaders s
 
 Existing pip-installed LiteLLM 1.106 example: `python -m pip install "litellm==1.106.3"`. Use the project lock workflow where applicable; do not downgrade a later fixed release or move every project to this line.
 
-[Why this update method is safe, and what it covers → A25](#a25-llm-api-libraries-agent-frameworks-and-mcp-servers)
+[Why this update method is safe, and what it covers → A23](#a23-llm-api-libraries-agent-frameworks-and-mcp-servers)
 
-### 26. Ollama, LM Studio and other local LLM apps
+### 24. Ollama, LM Studio and other local LLM apps
 
 **Applies to:** You use one of these local model apps.
 
@@ -580,24 +533,24 @@ Existing pip-installed LiteLLM 1.106 example: `python -m pip install "litellm==1
 
 **No incident-fixed minimum for these apps was confirmed here.** Obtain vendor confirmation/test results before marking the relevant downloader fixed.
 
-[Why this update method is safe, and what it covers → A26](#a26-ollama-lm-studio-and-other-local-llm-apps)
+[Why this update method is safe, and what it covers → A24](#a24-ollama-lm-studio-and-other-local-llm-apps)
 
-### 27. Inference, training, evaluation and notebooks
+### 25. Inference, training, evaluation and notebooks
 
 **Applies to:** You run vLLM, SGLang, Transformers, llama.cpp, notebooks or cloud/GPU jobs.
 
 **Before:** Apply earlier fixes in the environment doing downloads/API calls, not only the laptop submitting the job.
 
 1. Update its used certificates, runtime, API libraries and extra downloaders.
-2. Rebuild images/environments and use them in fresh jobs (19–20).
+2. Rebuild images/environments and use them in fresh jobs (17–18).
 3. Check the notebook kernel’s Python/packages and restart it.
 4. Verify its actual network client before new downloads/API traffic.
 
 **Do not automatically upgrade CUDA, GPU drivers, model weights or every ML framework for this incident.**
 
-[Why this update method is safe, and what it covers → A27](#a27-inference-training-evaluation-and-notebooks)
+[Why this update method is safe, and what it covers → A25](#a25-inference-training-evaluation-and-notebooks)
 
-### 28. Running services, workers and scheduled jobs
+### 26. Running services, workers and scheduled jobs
 
 **Applies to:** You maintain deployed apps, background workers, agents or scheduled jobs.
 
@@ -608,7 +561,41 @@ Existing pip-installed LiteLLM 1.106 example: `python -m pip install "litellm==1
 3. Confirm the **running** program uses the new version/image.
 4. Test its own HTTPS library against normal and affected-certificate sites. Do not send real credentials or data to test sites.
 
-[Why this update method is safe, and what it covers → A28](#a28-running-services-workers-and-scheduled-jobs)
+[Why this update method is safe, and what it covers → A26](#a26-running-services-workers-and-scheduled-jobs)
+
+### 27. Python tools installed in separate environments
+
+**Applies to:** People who use Python tools such as Poetry, PDM, Hatch, pip-tools, tox or nox, or tools installed or run through uv. Follow the matching case below for each tool and environment you use.
+
+A tool can have its **own environment: its own Python and packages**, separate from your project. Those copies need the certificate fixes too.
+
+**If you installed tools using `uv tool install` — update all of them**
+
+uv creates a separate environment for each tool installed this way. For example, `uv tool install poetry` creates one for Poetry. You can see your installed tools with `uv tool list`.
+
+Complete [07](#07-uv) first, then **run this once to update every installed uv tool and its packages**:
+
+```bash
+uv tool upgrade --all
+```
+
+This covers the tools listed by `uv tool list`. Their Python versions also need [08](#08-python-installations); this command does not guarantee a Python update. If you only use uv for project environments, continue with the project’s environment updates instead.
+
+**If you installed tools into an environment using pip or Conda**
+
+Apply [08](#08-python-installations), [09](#09-pip-in-each-python-environment) and [10](#10-python-certificate-packages-in-each-environment) in **each environment containing those tools**. If you already did that, you do not need to repeat it. Where the tool uses virtualenv, also follow [13](#13-virtualenv-the-tool-that-creates-python-environments).
+
+**If your commands start with `uvx`**
+
+uvx can create temporary tool environments that the command above does not update. Complete [07](#07-uv), then follow [A27’s uvx instructions](#tools-you-run-with-uvx) before using those tools again.
+
+**If you installed Poetry using its own installer**
+
+Poetry has its own environment. Apply [08](#08-python-installations)–[10](#10-python-certificate-packages-in-each-environment) there first, then run `poetry self update`. On Windows, rerun the [official PowerShell installer](https://python-poetry.org/docs/#installation) instead, using Windows protection from [01](#01-operating-system-certificate-protection) and a fixed Python from 08 to run it. If you cannot locate Poetry’s own environment, ask its maintainer to identify it.
+
+If an update fails or an old version setting prevents the fix, resolve it before using the tool online. [A27](#a27-python-tools-installed-in-separate-environments) lists the required versions and checks.
+
+[Update evidence and download protection → A27](#a27-python-tools-installed-in-separate-environments)
 
 ### Final Checklist
 
@@ -618,10 +605,12 @@ Existing pip-installed LiteLLM 1.106 example: `python -m pip install "litellm==1
 - [ ] Running apps/jobs were restarted or redeployed where needed.
 - [ ] Relevant application/service connection tests pass; unconfirmed vendor/runtime checks remain **pending confirmation**.
 
-### 29. Other tools
+### 28. Other tools
 
 I wasn’t sure whether anyone on the team uses these tools, so I haven’t included update instructions. They also need updating; let me know if you’d like me to add instructions.
 
+- [Pipenv](https://pipenv.pypa.io/en/latest/changelog.html#pipenv-2026-10-2-2026-10-21)
+- [pipx](https://pipx.pypa.io/stable/explanation/how-pipx-works.html)
 - [Mamba](https://conda.org/blog/2026-10-21-emudhra-security-updates/#mamba)
 - [Conda’s libmamba solver](https://conda.org/blog/2026-10-21-emudhra-security-updates/#conda-libmamba-solver-and-conda-pypi)
 - [Micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html)
@@ -631,7 +620,7 @@ I wasn’t sure whether anyone on the team uses these tools, so I haven’t incl
 
 ## Part 2 — Why each update method is safe, and what it covers
 
-**A01–A28 correspond to sections 01–28 in Part 1.** Each entry separates two questions: whether the first update can be obtained safely, and whether the resulting update fixes the relevant component. “Documented update command” and “confirmed incident fix” are not the same thing.
+**A01–A27 correspond to sections 01–27 in Part 1.** Each entry separates two questions: whether the first update can be obtained safely, and whether the resulting update fixes the relevant component. “Documented update command” and “confirmed incident fix” are not the same thing.
 
 ### A01. Operating-system certificate protection
 
@@ -751,139 +740,138 @@ Once the actual download route uses the corrected certificates, run the update i
 
 **Older standalone versions:** Our minimum of 0.11.2 for this update route comes from [Astral’s release notes](https://github.com/astral-sh/uv/blob/main/changelogs/0.11.x.md#0112): “Use uv reqwest client for self update”. This is our compatibility boundary, not a cutoff stated in the incident advisory. For earlier versions, obtain the [official installer](https://docs.astral.sh/uv/getting-started/installation/#standalone-installer) through the protected browser in [02](#02-browsers); on macOS, complete 03 before running it.
 
-**Scope:** This assessment covers standard installations and is based on maintainer guidance and source inspection, not execution tests. Separately installed curl or custom certificate files need their own protection. Self-update can change shell/PATH settings.
-
 [Back to action 07](#07-uv)
 
 ### A08. Python installations
 
-**Download safety and ordering.** Conda/Homebrew/uv must already satisfy their own download conditions. For a python.org installer, obtain it through the protected browser and retain normal installer/publisher checks. An interpreter update is not a safe way to bypass an affected package manager that downloads it.
-
-**What this fixes.** The fixed Python ssl verifier blocks the compromised keys. Ordinary users of that module, including normal pip connections, gain that protection even if an old root remains in a separate CA file.
-
-**Limits and follow-up.** Native extensions or other executables can use another verifier. Older unsupported Python needs a maintained build/migration. Exact venv paths and Jupyter kernels can keep another interpreter: check inside the notebook and restart it. Upstream versions and distributor backports are alternative evidence, not interchangeable version-number guesses.
-
-**uv guidance checked: 27 October 2026.**
+**Checked: 27 October 2026.**
 
 | Claim | Sources | Quotes |
 | --- | --- | --- |
-| **uv-managed Python coverage:** update uv first, then run `uv python upgrade`. 0.13.6 supplies the fixed Python releases listed in 08; refreshed Python 3.11+ builds also include corrected pip and ensurepip bundles. | [0.13.6 Python builds](https://github.com/astral-sh/uv/releases/tag/0.13.6)<br><br>[Astral’s incident instructions for Python](https://github.com/astral-sh/uv/releases/tag/0.13.5)<br><br>[Upgrade command and scope](https://docs.astral.sh/uv/concepts/python-versions/#upgrading-python-versions) | **0.13.6:** “Add CPython 3.11.18, 3.12.16, 3.13.18, 3.14.10, and 3.15.2”.<br><br>**Incident instructions:** “After upgrading uv, run `uv python upgrade`”; “pip 26.2.2”; “bundled with `ensurepip`”.<br><br>**Scope:** “To upgrade all installed Python versions:”; `uv python upgrade`. |
+| **Python fix:** the five minimum versions in 08 block the compromised keys in Python’s `ssl` module, including normal pip connections, even with an older certificate bundle. | [Python’s incident advisory](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576)<br><br>[Fixed-release announcement](https://discuss.python.org/t/python-3-15-2-3-14-10-3-13-18-3-12-16-and-3-11-18-are-out/109678) | **Advisory:** “regardless of whether the emSign root CA certificate is in use by ‘certifi’”.<br><br>**Release:** “These keys are now blocked by the `ssl` module”. |
+| **Existing uv environments:** the shared Python upgrade alone does not move environments tied to an exact old patch or installation path. This applies to security patches too. | [Astral’s upgrade limitations](https://docs.astral.sh/uv/concepts/python-versions/#upgrading-python-versions) | “an explicitly requested patch version”; “it will not be transparently upgraded to a new version”. |
+| **Older versions:** python.org’s 3.11–3.13 fixes are source-only; use a supplier’s fixed build. Python 3.10 and older no longer receive upstream security fixes. | [Python’s release announcement and maintainer’s explanation](https://discuss.python.org/t/python-3-15-2-3-14-10-3-13-18-3-12-16-and-3-11-18-are-out/109678)<br><br>[Python’s incident advisory](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576) | **3.11–3.13:** “source-only security releases”.<br><br>**Older:** “Python versions 3.10 and older are end-of-life”. |
 
-**uv-managed environments:** Python upgrades stay within each installed release line and retain old copies that environments may still use. Exact patch pins do not move automatically; existing environments need their own pip update. Do not delete old Python folders while environments reference them.
-
-Sources: [official release/download pages](https://www.python.org/downloads/), [Python’s fixed-runtime announcement](https://discuss.python.org/t/python-3-15-2-3-14-10-3-13-18-3-12-16-and-3-11-18-are-out/109678), [Conda install/version constraints](https://docs.conda.io/projects/conda/en/stable/commands/install.html), [uv Python upgrades](https://docs.astral.sh/uv/concepts/python-versions/).
+**Existing uv environments:** Environments that follow a Python release line normally pick up the updated patch automatically. Those tied to an exact older patch or installation path can keep using the old copy; they also need to be moved to a fixed Python. Project version settings and lockfiles are covered separately in [12](#12-project-version-files-and-saved-environments). Changing those files alone does not update an existing environment.
 
 [Back to action 08](#08-python-installations)
 
 ### A09. pip in each Python environment
 
-**Download safety and ordering.** Route A relies on the actual interpreter’s confirmed compromised-key block. Route B names an exact wheel and SHA-256 checksum from the official Python advisory; pip rejects substituted contents that do not match it. Obtain that command through the protected browser/trusted advisory. This provides a specific first-download check instead of assuming old pip is safe.
+**Checked: 27 October 2026.**
 
-**What this fixes.** pip 26.2.2 replaces its included certifi. OS certificate edits alone do not remove the old copy inside pip; updating importable application certifi also does not update pip’s copy.
+| Claim | Sources | Quotes |
+| --- | --- | --- |
+| **Fix:** pip 26.2.2 updates pip’s own certificate bundle. Update each environment’s copy. | [Python’s incident advisory](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576)<br><br>[pip 26.2.2 release notes](https://pip.pypa.io/en/stable/news/) | **Advisory:** “For all existing virtual environments on your system”.<br><br>**pip release:** “Upgrade certifi to 2026.10.19”. |
+| **Normal update:** the command in 09 is pip’s documented updater. Python’s fixed releases protect this download against the compromised keys, even before pip is updated. | [pip’s upgrade instructions](https://pip.pypa.io/en/stable/installation/#upgrading-pip)<br><br>[Python’s fixed-release announcement](https://discuss.python.org/t/python-3-15-2-3-14-10-3-13-18-3-12-16-and-3-11-18-are-out/109678) | **Command:** `python -m pip install --upgrade pip`.<br><br>**Python release:** “Normal uses of `pip`, including to upgrade `pip` itself, are now safe from attacks based on those compromised keys”. |
+| **Alternative update:** the command below is copied from Python’s incident advisory. Its supplied SHA-256 checksum verifies the download even when old certificate trust is still affected. | [Python security guidance and exact command](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576)<br><br>[pip’s checksum documentation](https://pip.pypa.io/en/stable/topics/secure-installs/) | **Security guidance:** “install securely, regardless of a MITM attack”.<br><br>**Checksum documentation:** “protect against remote tampering and network issues”. |
+| **Older Apple Python:** Python 3.9 cannot install the fixed pip 26.2.2 release. | [pip 26.2.2’s Python requirement](https://pypi.org/project/pip/26.2.2/) | “Python >=3.10”. |
+| **Apple update pending:** the fix for the certificate file used by Apple’s command-line tools is still awaiting a macOS update. | [Apple’s incident notice](https://support.apple.com/en-us/149555) | “This file will be updated in a future macOS update.” |
 
-**Limits and follow-up.** The system/custom CA configuration still needs checking. Include Conda, .venv, tox/nox, user installs, isolated tools and notebook kernels. ensurepip/virtualenv can create another old pip later; use 08/15 or repeat the verified first update in that new environment. Do not add persistent sitecustomize/CA overrides as an assumed fix.
+#### Apple’s bundled pip
 
-Sources: [Python’s incident advisory and first-update command](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576), [pip’s upgrade instructions](https://pip.pypa.io/en/stable/installation/#upgrading-pip), [ensurepip documentation](https://docs.python.org/3/library/ensurepip.html), [pip release notes](https://pip.pypa.io/en/stable/news/), [pip HTTPS trust behavior](https://pip.pypa.io/en/stable/topics/https-certificates/), [pip checksum checks](https://pip.pypa.io/en/stable/topics/secure-installs/).
+The Apple Command Line Tools installation checked locally on **27 October 2026** contained **Python 3.9.6 and pip 21.2.4**. The fixed pip release requires Python 3.10 or later, so that Apple-provided copy cannot take the update. Updating pip does not upgrade the Python it runs on; other Macs may have different bundled versions.
+
+Apple’s pending update concerns `/etc/ssl/cert.pem`. Its notice does not specifically confirm a fix for pip’s own certificate bundle, so we cannot assume that update—or the workaround in 03—will fix bundled pip. Use pip in a separately maintained Python environment instead of modifying Apple’s copy.
+
+#### pip update before the Python fix
+
+Use this in the activated environment if its Python fix is not confirmed. **If pip is already 26.2.2 or later, skip this command.**
+
+**Compatibility:** pip 26.2.2 [requires Python ≥3.10](https://pypi.org/project/pip/26.2.2/). For older Python, follow 08. Use a separately maintained Python environment for older Apple/Xcode installations; do not use `sudo pip` or edit Apple’s Python.
+
+Obtain the command and checksum through the protected browser described in [02](#02-browsers), and copy the entire command:
+
+```bash
+python -m pip install "pip @ https://files.pythonhosted.org/packages/3f/06/3e4420302363fbb71be3c7f35ce042f54bfca330e3e66b3a2e3c4cca579f/pip-26.2.2-py3-none-any.whl#sha256=fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70"
+```
+
+We checked the full command against the advisory and its checksum against [PyPI’s wheel details](https://pypi.org/project/pip/26.2.2/#files). pip checks the supplied checksum before installing the downloaded file.
 
 [Back to action 09](#09-pip-in-each-python-environment)
 
 ### A10. Python certificate packages in each environment
 
-**Download safety and ordering.** The corrected pip/Conda download route is established first. This ordering avoids fetching the certificate fix through a still-unconfirmed installer. If the actual client instead uses a custom CA list, update/check that selected list separately.
+**Checked: 27 October 2026.**
 
-**What this fixes.** The minimum certifi is 2026.10.19. Conda’s ca-certificates minimum is 2026.10.19 on conda-forge and 2026.10.20 on Anaconda main. These repair environment/application bundles separately from pip’s included bundle.
+| Claim | Sources | Quotes |
+| --- | --- | --- |
+| **certifi update:** Python’s incident guidance recommends 2026.10.19 or later, using repaired pip first. Our command targets the active environment and adds that minimum. | [Python’s incident advisory and certifi update command](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576) | **Minimum:** “certifi 2026.10.19”.<br><br>**Order:** “use this secure pip installation to upgrade certifi and uv”.<br><br>**Command excerpt:** `-m pip install --upgrade certifi`. |
+| **Conda commands:** copied from the incident instructions, with `base` replaced by the environment’s name as directed. Both certificate bundles need updating in each environment that uses them. | [Conda’s incident instructions: update CA packages separately](https://conda.org/blog/2026-10-21-emudhra-security-updates/#update-ca-packages-separately) | **Both channels:** `"certifi>=2026.10.19"`.<br><br>**defaults:** `"ca-certificates>=2026.10.20"`.<br><br>**conda-forge:** `"ca-certificates>=2026.10.19"`.<br><br>**Other environments:** “Updating `base` does not update those bundles.” |
+| **Conda download order:** completing 06 installs the corrected CA dependencies for subsequent downloads. This follows from Conda’s release requirements; A06 retains the first-update uncertainty. | [Conda 26.9.4’s requirements](https://conda.org/blog/2026-10-21-emudhra-security-updates/#conda-2694)<br><br>[First Conda update → A06](#a06-conda-miniconda-anaconda-and-miniforge) | **Conda:** “It requires the minimum CA package versions listed below.” |
 
-**Limits and follow-up.** Check active pins (14) and used CA overrides (23). Conda Python/platform availability limits from A06 still apply. Updating base does not update every environment, and changing a package not used by the connection cannot establish protection.
+**Compatibility:** Conda’s corrected certifi needs Python **3.10+ on defaults** or **3.11+ on conda-forge**. Defaults has no corrected CA packages for Intel macOS (`osx-64`) or the retired `linux-ppc64le` and `linux-s390x` platforms. [Conda’s guidance](https://conda.org/blog/2026-10-21-emudhra-security-updates/#update-ca-packages-separately) calls for a supported Python/platform or a distribution that supplies the fix. If this affects you, get help choosing that route; keep certificate verification enabled.
 
-Sources: [Conda’s incident instructions](https://conda.org/blog/2026-10-21-emudhra-security-updates/), [release requirements and platform limits](https://github.com/conda/conda/issues/16880), [documented offline packages and dependency limitation](https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/installing-with-conda.html), [install options](https://docs.conda.io/projects/conda/en/stable/commands/install.html), [Python’s incident advisory and first-update command](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576), [pip’s upgrade instructions](https://pip.pypa.io/en/stable/installation/#upgrading-pip), [ensurepip documentation](https://docs.python.org/3/library/ensurepip.html), [Requests certificate configuration](https://requests.readthedocs.io/en/stable/user/advanced/), [HTTPX SSL defaults and overrides](https://www.python-httpx.org/advanced/ssl/), [Render’s application remediation/verification guidance](https://render.com/docs/advisory-emudhra).
+Saved requirements are covered in [12](#12-project-version-files-and-saved-environments). Custom certificate files need their own repair in [21](#21-python-apps-that-make-https-connections).
 
 [Back to action 10](#10-python-certificate-packages-in-each-environment)
 
 ### A11. Node.js, npm/npx, Yarn, pnpm and Corepack
 
-**Download safety and ordering.** Package-manager routes depend on their earlier fixes. The official installer route uses the protected browser and normal publisher checks. An old nvm/fnm/other downloader is not automatically safe because Node’s new release is fixed: verify its connection/artifact checking or use the verified distribution supplied by IT.
+**Checked: 27 October 2026.**
 
-**What this fixes.** The Node security releases fix its TLS checking. Package managers using its normal JavaScript networking do not need a separate npm version upgrade just to replace certificates.
+| Claim | Sources | Quotes |
+| --- | --- | --- |
+| **Node fix released:** 22.23.4, 24.22.1 and 26.12.1 address this incident. Tools using these runtimes’ normal TLS connections inherit the block; this is our inference from the Node patch. | [Node’s incident release announcement and downloads](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases)<br><br>[Node’s certificate-verification patch](https://github.com/nodejs/node/pull/66871) | **Announcement:** “ca-cert (eMudhra Intermediate CA Compromise) on 26.x, 24.x, 22.x”.<br><br>**Patch:** “every SSL_CTX Node.js creates”. |
+| **Official installers:** the linked releases provide Windows and macOS installers. Obtain them through the protected browser in 02, so the old Node runtime does not perform the download. | [Node 24’s official installer links](https://nodejs.org/en/blog/release/v24.22.1/)<br><br>[Browser protection evidence → A02](#a02-browsers) | **Release page:** “Windows 64-bit Installer”; “Windows ARM 64-bit Installer”; “macOS 64-bit Installer”. |
+| **Homebrew and Conda commands:** adapted from their documented updaters to select the existing Node package and fixed release line. Complete 04 or 06 first to protect their downloads. | [Homebrew upgrade command](https://docs.brew.sh/Manpage#upgrade-options-installed_formulainstalled_cask-) · [node@24 package](https://formulae.brew.sh/formula/node@24)<br><br>[Conda install command](https://docs.conda.io/projects/conda/en/stable/commands/install.html)<br><br>[Homebrew protection → A04](#a04-homebrew) · [Conda protection and first-update limit → A06](#a06-conda-miniconda-anaconda-and-miniforge) | **Homebrew:** “Upgrade outdated, unpinned packages”.<br><br>**Conda:** “installs a set of packages consistent with those specifications”. |
+| **nvm download order:** the commands follow nvm’s documented install/use syntax, selecting line 24. Our source inspection shows it downloads through curl, or wget as fallback. Apple’s curl therefore needs 03 first. | [nvm’s usage instructions](https://github.com/nvm-sh/nvm#usage)<br><br>[nvm’s download function](https://github.com/nvm-sh/nvm/blob/master/nvm.sh#L143-L217)<br><br>[Apple workaround evidence → A03](#a03-macos-command-line-certificates) | **Documented syntax:** `nvm install 14.7.0`; `nvm use`.<br><br>**Downloader code:** `NVM_DOWNLOADER='curl'`; `NVM_DOWNLOADER='wget'`. |
+| **nvm-windows — source assessment:** the same install/use commands are supported. Its standard HTTPS client uses Go’s normal certificate verification, which delegates to Windows. With certificate verification enabled, this route benefits from the incident block once delivered through 01. This is a source assessment, not an execution test on Windows. | [Install command](https://docs.nvm-windows.com/command/install/) · [Use command](https://docs.nvm-windows.com/command/use/)<br><br>[1.2.2 download code](https://github.com/nvm-windows/nvm/blob/1.2.2/src/web/web.go) · [v2 HTTP client](https://github.com/nvm-windows/common/blob/main/http/client.go)<br><br>[Go’s incident explanation](https://go.dev/blog/emudhra-incident)<br><br>[Windows protection → A01](#a01-operating-system-certificate-protection) | **Commands:** `nvm install 24`; `nvm use <version>`.<br><br>**v2 client:** `transport := gohttp.DefaultTransport.(*gohttp.Transport).Clone()`.<br><br>**Go:** “On Windows and macOS we delegate these checks to the platform APIs”. |
+| **Standalone pnpm 10/11:** these releases update their bundled Node. Updating a separately installed Node does not replace that copy. | [pnpm 10.34.8 release notes](https://github.com/pnpm/pnpm/releases/tag/v10.34.8)<br><br>[pnpm 11.28.8 release notes](https://github.com/pnpm/pnpm/releases/tag/v11.28.8) | **10.34.8:** “The standalone pnpm executables now embed Node.js 24.22.1.”<br><br>**11.28.8:** “The standalone `@pnpm/exe` builds now embed Node.js 26.12.1.” |
+| **pnpm 12 target:** 12.15.0’s released source selects the fixed certificate verifier. This is our dependency inspection, not a pnpm incident notice or a test of its binaries. | [pnpm 12.15.0’s dependency lockfile](https://github.com/pnpm/pnpm/blob/v12.15.0/Cargo.lock#L7432-L7442)<br><br>[RustSec’s verifier advisory](https://rustsec.org/advisories/RUSTSEC-2026-0382.html) | **Lockfile:** `name = "rustls-webpki"`; `version = "0.103.16"`.<br><br>**Advisory:** “Versions 0.103.16 and 0.104.0-alpha.8 reject paths containing these public keys.” |
+| **pnpm update routes:** use repaired npm/Homebrew, or the official installer through protected curl/PowerShell. We add the fixed version to pnpm’s documented commands; the installer’s download dependencies were checked in its source. | [pnpm’s installation instructions](https://pnpm.io/installation) · [Homebrew’s pnpm package](https://formulae.brew.sh/formula/pnpm)<br><br>[Official installer and version selection](https://github.com/pnpm/get.pnpm.io#configuring)<br><br>[Shell installer source](https://github.com/pnpm/get.pnpm.io/blob/main/install.sh) · [PowerShell installer source](https://github.com/pnpm/get.pnpm.io/blob/main/install.ps1) | **npm:** `npm install -g pnpm@latest`.<br><br>**Installer setting:** `PNPM_VERSION`.<br><br>**Shell source:** `curl -fsSL "$1"`.<br><br>**PowerShell source:** `Invoke-WebRequest`. |
 
-**Limits and follow-up.** Unsupported/EOL Node lines need a maintained fix/migration. Check .nvmrc/.node-version, Volta, editor, CI and container copies. Plain Homebrew node can change major; do not assume it is node@24. Additional CA settings/custom HTTPS code need review. Keep Corepack/integrity/signature checks enabled.
-
-#### pnpm 12 and independently packaged managers
-
-pnpm 12 is a self-contained executable; updating system Node does not prove its own networking fixed. The documented command is `pnpm self-update`, but inside a project with a `packageManager` pin it can change the project pin rather than the global installation. No incident-specific fixed pnpm 12 minimum was established here. Confirm its own vendor build or actual client; do not force a pnpm major upgrade as an assumed certificate fix.
-
-`command -v node` on macOS/Linux or `Get-Command node -All` in PowerShell helps identify installed copies. `volta pin` changes a project setting and should be reviewed as a project change.
-
-Sources: [Node’s download page](https://nodejs.org/en/download), [Node security release](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases), [nvm](https://github.com/nvm-sh/nvm), [nvm-windows](https://github.com/nvm-windows/nvm), [fnm](https://github.com/Schniz/fnm), [Volta install command](https://docs.volta.sh/reference/install), [npm and Node relationship](https://docs.npmjs.com/about-npm-versions/), [Corepack documentation](https://github.com/nodejs/node/blob/main/deps/corepack/README.md), [pnpm’s current installation architecture](https://pnpm.io/installation/).
+**Other Node version managers:** download protection remains unverified here for [fnm](https://github.com/Schniz/fnm) and [Volta](https://github.com/volta-cli/volta). Have the maintainer confirm the installed downloader’s protection before updating. For nvm using another curl or wget, repair that tool’s certificate protection first.
 
 [Back to action 11](#11-nodejs-npmnpx-yarn-pnpm-and-corepack)
 
-### A12. Pipenv
-
-**Download safety and ordering.** The update runs through an already protected pip or pipx backend. This dependency can be completed first even when pipx’s detailed section appears later.
-
-**What this fixes.** Pipenv’s fixed release updates its own included pip and CA packages; those are separate from the managed project’s pip.
-
-**Limits and follow-up.** A tool update does not update all project environments. Keep the original installation method.
-
-Sources: [Pipenv installation methods](https://pipenv.pypa.io/en/latest/installation.html), [Pipenv vendored-pip/CA fix](https://pipenv.pypa.io/en/latest/changelog.html).
-
-[Back to action 12](#12-pipenv)
-
-### A13. Python tools installed in separate environments
-
-**Download safety and ordering.** The backend doing the download must be corrected before network maintenance. --skip-maintenance lets the maintainer inspect without triggering pipx’s automatic shared-library update. Use the shared environment’s own Python with the hash-verified pip route when necessary.
-
-**What this fixes.** These tools run in separate environments. Updating their used installer/runtime/CA packages repairs those copies; updating only the project misses them.
-
-**Limits and follow-up.** A top-level upgrade can leave older dependencies that still satisfy requirements. pipx may delegate to uv; update that backend too. Standalone binaries require vendor update/build evidence. Newly created environments need fixed starters, while old project environments need their own updates.
-
-#### Maintainer check: pipx’s shared environment
-
-`pipx environment --skip-maintenance --value PIPX_SHARED_LIBS` prints its shared environment’s location. Use that environment’s Python with 09 if its pip needs the first-update fix. Older pipx may not support the same flags; check `pipx --help` and identify the environment directly. Do not assume upgrading an app upgrades all its already-installed dependencies.
-
-Sources: [pipx CLI and shared-pip operations](https://pipx.pypa.io/stable/reference/cli.html), [pipx shared environment/backend configuration](https://pipx.pypa.io/stable/reference/environment-variables.html), [uv isolated-tool upgrades](https://docs.astral.sh/uv/concepts/tools/), [Poetry self commands and Windows caveat](https://python-poetry.org/docs/cli/), [PDM CLI](https://pdm-project.org/en/latest/reference/cli/), [Hatch installation variants](https://hatch.pypa.io/latest/install/), [tox installation](https://tox.wiki/en/latest/installation.html), [Nox documentation](https://nox.thea.codes/en/stable/), [Poetry’s own environment and self commands](https://python-poetry.org/docs/cli/#self).
-
-[Back to action 13](#13-python-tools-installed-in-separate-environments)
-
-### A14. Project version files and saved environments
+### A12. Project version files and saved environments
 
 **Download safety and ordering.** Regeneration downloads run through the corrected tool. New artifact checksums must come through that protected route, not be copied from an untrusted response.
 
 **What this fixes.** Corrected definitions and saved environments prevent a later rebuild restoring the old program.
 
-**Limits and follow-up.** Check requirements*.txt, pyproject.toml, locks, Conda specs, Dockerfiles, .nvmrc/.node-version, Volta/packageManager settings, hook runtime versions and workflows. Review the dependency diff. Historical locks need not be rewritten; label unsuitable online rebuilds and provide a corrected active definition. Old model/source files are not automatically malicious.
+**Limits and follow-up.** Check requirements*.txt, .python-version, pyproject.toml, locks, Conda specs, Dockerfiles, .nvmrc/.node-version, Volta/packageManager settings, hook runtime versions and workflows. Review the dependency diff. Historical locks need not be rewritten; label unsuitable online rebuilds and provide a corrected active definition. Old model/source files are not automatically malicious.
 
 **Why recreation can work.** A replacement removes the old environment’s installed copies, provided its creator and saved requirements select fixed versions. An old creator can still supply old starter pip, and unchanged requirements can reinstall old certificate packages. Complete 09 before other package downloads and check 10 after setup. Python treats project virtual environments as disposable; the incident advisory also supports updating existing environments. Keep project files outside the environment and test the replacement before removing the old one.
 
-Sources: [uv targeted lock upgrades](https://docs.astral.sh/uv/concepts/projects/sync/), [Poetry update command](https://python-poetry.org/docs/cli/#update), [pip-tools targeted upgrades](https://pip-tools.readthedocs.io/en/stable/), [GitHub cache management](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manage-caches), [Python virtual-environment lifecycle](https://docs.python.org/3/library/venv.html), [Python incident guidance for existing environments](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576).
+Sources: [uv Python version settings](https://docs.astral.sh/uv/concepts/python-versions/#project-python-versions), [uv targeted lock upgrades](https://docs.astral.sh/uv/concepts/projects/sync/), [Poetry update command](https://python-poetry.org/docs/cli/#update), [pip-tools targeted upgrades](https://pip-tools.readthedocs.io/en/stable/), [GitHub cache management](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manage-caches), [Python virtual-environment lifecycle](https://docs.python.org/3/library/venv.html), [Python incident guidance for existing environments](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576).
 
-[Back to action 14](#14-project-version-files-and-saved-environments)
+[Back to action 12](#12-project-version-files-and-saved-environments)
 
-### A15. virtualenv: the tool that creates Python environments
+### A13. virtualenv: the tool that creates Python environments
 
-**Download safety and ordering.** The package update uses corrected pip/the verified existing manager. It is not safe to repair the creator by ignoring a warning from the installer fetching it.
+**Checked: 27 October 2026.**
 
-**What this fixes.** virtualenv 21.14.12 includes pip 26.2.2 as its starter. New environments can then begin with fixed pip.
+| Claim | Sources | Quotes |
+| --- | --- | --- |
+| **Fix:** Python’s incident guidance requires virtualenv 21.14.12 or later. That release bundles fixed pip 26.2.2 for creating new environments. | [Python’s incident guidance](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576)<br><br>[virtualenv 21.14.12 release notes](https://virtualenv.pypa.io/en/latest/changelog.html#v21-14-12-2026-10-21) | **Incident minimum:** “virtualenv: 21.14.12”.<br><br>**Release:** “the embedded pip wheel from `26.2.1` to `26.2.2`”. |
+| **Command:** the pip example adapts virtualenv’s documented installation command: we require the incident-fixed version, omit `--user` to update the active environment and add `--upgrade`. | [virtualenv’s installation instructions](https://virtualenv.pypa.io/en/latest/how-to/install.html)<br><br>[pip’s upgrade option](https://pip.pypa.io/en/stable/cli/pip_install/#cmdoption-U) | **virtualenv:** `python -m pip install --user virtualenv`.<br><br>**pip:** “Upgrade all specified packages to the newest available version.” |
+| **Download protection:** repair the installer before it downloads virtualenv. Python’s security guidance supports using corrected pip to obtain further fixes. For Conda, complete 06 first; its initial-download verification limit remains in A06. | [Python security guidance](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576)<br><br>[pip repair evidence → A09](#a09-pip-in-each-python-environment)<br><br>[Conda’s incident instructions](https://conda.org/blog/2026-10-21-emudhra-security-updates/#conda-2694) · [Conda evidence and limit → A06](#a06-conda-miniconda-anaconda-and-miniforge) | **Python security guidance:** “From this secure installation you can bootstrap into a secure installation of certifi, uv, or other dependencies.”<br><br>**Conda’s prerequisite command:** `conda install --name base conda=26.9.4`. |
+| **Update the tool’s own copy:** pre-commit, tox and Nox normally use virtualenv installed alongside the tool. This is supported by our source inspection and Nox’s documentation; it is why 13 repeats the update in each tool’s environment. | [pre-commit’s Python environment creation](https://github.com/pre-commit/pre-commit/blob/v4.7.0/pre_commit/languages/python.py)<br><br>[tox’s dependency declaration](https://github.com/tox-dev/tox/blob/main/pyproject.toml)<br><br>[Nox’s environment backends](https://nox.thea.codes/en/stable/config.html#configuring-a-sessions-virtualenv) | **pre-commit:** `[sys.executable, '-mvirtualenv', envdir]`.<br><br>**tox dependency:** `"virtualenv>=21.1"`.<br><br>**Nox:** “The `virtualenv` backend runs from Nox’s interpreter”. |
 
-**Limits and follow-up.** Updating pre-commit alone may leave older virtualenv installed. Older ensurepip wheels and other creators can still recreate old pip; check 07–09. Existing environments do not automatically change when the creator changes.
+**Existing environments:** this updates the tool that creates environments; it does not replace Python or pip in environments already created. Those still need [08](#08-python-installations)–[10](#10-python-certificate-packages-in-each-environment). For pre-commit’s saved environments, follow [14](#14-pre-commit-recreate-saved-hook-environments).
 
-Sources: [virtualenv seed fixes](https://virtualenv.pypa.io/en/latest/changelog.html).
+**Coverage:** new environments also need a fixed Python from 08. Settings that explicitly select an older pip must be corrected. If tox or Nox is configured to use another environment creator, update that creator instead. If your existing Conda channel cannot supply the required virtualenv version, resolve that with your maintainer rather than replacing its package with pip.
 
-[Back to action 15](#15-virtualenv-the-tool-that-creates-python-environments)
+[Back to action 13](#13-virtualenv-the-tool-that-creates-python-environments)
 
-### A16. pre-commit: recreate saved hook environments
+### A14. pre-commit: recreate saved hook environments
 
-**Download safety and ordering.** Cache deletion itself does not download code. Recreating hooks does: Git, the environment creator and runtime downloaders must be protected first. An old fixed-version setting can still force a vulnerable download, so correct it before rebuilding.
+**Checked: 27 October 2026.**
 
-**What this fixes.** A fixed creator plus recreation replaces old hook installers/runtimes without changing the source versions of the checks. install-hooks installs environments without running the hooks.
+| Claim | Sources | Quotes |
+| --- | --- | --- |
+| `pre-commit clean` followed by `pre-commit install-hooks` replaces cached Python hook environments with ones using corrected Python and pip, provided the updates and version selections in 08, 12 and 13 are complete. | [Documented clean command](https://pre-commit.com/#pre-commit-clean) · [Documented install-hooks command](https://pre-commit.com/#pre-commit-install-hooks)<br><br>[Python hook creation code](https://github.com/pre-commit/pre-commit/blob/v4.7.0/pre_commit/languages/python.py#L214-L228)<br><br>[virtualenv 21.14.12 release notes](https://virtualenv.pypa.io/en/latest/changelog.html#v21-14-12-2026-10-21)<br><br>[Python fix → A08](#a08-python-installations) · [Creator fix → A13](#a13-virtualenv-the-tool-that-creates-python-environments) | **Clean:** “Clean out cached pre-commit files.”<br><br>**Install:** “Install all missing environments for the available hooks.”<br><br>**Python creation:** `[sys.executable, '-mvirtualenv', envdir]`.<br><br>**virtualenv:** “the embedded pip wheel from `26.2.1` to `26.2.2`”. |
+| The earlier Git and Python repairs are needed to protect downloads during rebuilding. Our source inspection shows Git fetches hook code and the new Python environment runs pip to install it; certificate verification must remain enabled. | [Git download code](https://github.com/pre-commit/pre-commit/blob/v4.7.0/pre_commit/store.py#L177-L193)<br><br>[Python hook installation code](https://github.com/pre-commit/pre-commit/blob/v4.7.0/pre_commit/languages/python.py#L214-L228)<br><br>[Git protection → A03](#a03-macos-command-line-certificates) / [A05](#a05-git-for-windows) · [Python protection → A08](#a08-python-installations) | **Git:** `git_cmd('fetch', 'origin', '--tags')`.<br><br>**Python installer:** `('python', '-mpip', 'install', '.', *additional_dependencies)`. |
 
-**Limits and follow-up.** Do not use pre-commit autoupdate as cache repair; it changes hook revisions. A shell’s default Node/Go is not the private hook copy. Rebuild Go-based executables with the corrected compiler. In CI, remove only affected pre-commit caches after correcting their inputs.
+**Version checks:** Check Python inside the recreated hook environments against [08](#08-python-installations), and pip against **26.2.2 or later**. Correct old `language_version` / `default_language_version` settings before rebuilding. These checks concern the hook’s environment, which can differ from your terminal’s default.
 
-Sources: [virtualenv seed fixes](https://virtualenv.pypa.io/en/latest/changelog.html), [pre-commit cache and install-hooks commands](https://pre-commit.com/), [Go’s security release history](https://go.dev/doc/devel/release), [GitHub CLI’s patched Go build](https://github.com/cli/cli/releases/tag/v2.102.1).
+**Scope:** The evidence above covers the standard Python hook installation path. Hooks that use an existing system environment need that environment’s earlier updates. If you configure separate pre-commit cache locations, repeat the clean/rebuild for each one; CI caches are handled in 18.
 
-[Back to action 16](#16-pre-commit-recreate-saved-hook-environments)
+[Back to action 14](#14-pre-commit-recreate-saved-hook-environments)
 
-### A17. Code editors and AI coding tools
+### A15. Code editors and AI coding tools
 
 **Download safety and ordering.** For each row, use its supported updater with publisher/integrity checks, or a verified official distribution obtained through the protected browser. Package-manager routes require the actual runtime/store used to download to be corrected. This guide does not establish that every old private app updater is safe; if its route is affected/unconfirmed, use verified vendor/IT distribution before online self-update.
 
@@ -904,9 +892,9 @@ Sources: [virtualenv seed fixes](https://virtualenv.pypa.io/en/latest/changelog.
 
 Sources: [official installer](https://www.cursor.com/downloads), [VS Code update page](https://code.visualstudio.com/updates/v1_143), [Microsoft maintainer confirmation of the backport](https://github.com/microsoft/vscode/pull/343490#issuecomment-6344976686), [VS Code backport PR](https://github.com/microsoft/vscode/pull/342838), [Cursor CLI updates](https://docs.cursor.com/en/cli/installation), [Windsurf vendor troubleshooting/update notes](https://docs.windsurf.com/troubleshooting/windsurf-common-issues), [OpenAI’s documented CLI update routes](https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex), [Codex runtime issue](https://github.com/openai/codex/issues/56076), [Claude Code updates and signature verification](https://code.claude.com/docs/en/setup), [Claude Code changelog](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
 
-[Back to action 17](#17-code-editors-and-ai-coding-tools)
+[Back to action 15](#15-code-editors-and-ai-coding-tools)
 
-### A18. Development and cloud command-line tools
+### A16. Development and cloud command-line tools
 
 **Download safety and ordering.** Homebrew/package-manager routes inherit the stated earlier prerequisites. For vendor installers, use a verified official distribution through the protected browser with expected publisher/signature checks. The checked documentation supplies the commands but not an independent bootstrap proof for every affected old CLI self-updater; do not assume that proof exists.
 
@@ -925,9 +913,9 @@ Sources: [official installer](https://www.cursor.com/downloads), [VS Code update
 
 Sources: [GitHub CLI release](https://github.com/cli/cli/releases/tag/v2.102.1), [GitHub CLI installation methods](https://github.com/cli/cli#installation), [Git LFS releases](https://github.com/git-lfs/git-lfs/releases/tag/v3.8.1), [Azure CLI update documentation](https://learn.microsoft.com/en-us/cli/azure/update-azure-cli?view=azure-cli-latest), [Azure extension update](https://learn.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az-extension-update), [AWS CLI update documentation](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), [gcloud component updates](https://docs.cloud.google.com/sdk/docs/components), [curl distributions and TLS backends](https://curl.se/windows/microsoft.html), [curl certificate-list selection](https://curl.se/docs/sslcerts.html), [OpenSSL verification and trust-store options](https://docs.openssl.org/3.5/man1/openssl-verification-options/).
 
-[Back to action 18](#18-development-and-cloud-command-line-tools)
+[Back to action 16](#16-development-and-cloud-command-line-tools)
 
-### A19. Docker Desktop and container images
+### A17. Docker Desktop and container images
 
 **Download safety and ordering.** Desktop comes through its supported updater or verified vendor installer obtained with 02. Image build steps then download through the corrected OS/package/runtime clients inside the image; host protection alone does not establish their safety. Repair/verify the base and installers before online dependency downloads.
 
@@ -937,9 +925,9 @@ Sources: [GitHub CLI release](https://github.com/cli/cli/releases/tag/v2.102.1),
 
 Sources: [Docker Desktop incident releases](https://docs.docker.com/desktop/release-notes/), [macOS installation/update distribution](https://docs.docker.com/desktop/setup/install/mac-install/), [Docker build cache and pull guidance](https://docs.docker.com/build/building/best-practices/), [host/container trust-store separation](https://docs.docker.com/engine/network/ca-certs/), [Docker Desktop Windows installation](https://docs.docker.com/desktop/setup/install/windows-install/).
 
-[Back to action 19](#19-docker-desktop-and-container-images)
+[Back to action 17](#17-docker-desktop-and-container-images)
 
-### A20. WSL, remote machines, Azure ML and CI
+### A18. WSL, remote machines, Azure ML and CI
 
 **Download safety and ordering.** The host OS update route does not protect every guest or remote environment. Each repeats the prerequisite checks. Ubuntu APT verifies signed repository information and package checksums using its archive keys, independently of website CAs. For Amazon Linux retain the configured RPM signature checks; AL2023 enables package GPG checks by default. Do not bypass authentication to force a CA update. For CI/cloud images, establish trusted base artifacts and corrected installers before downloads.
 
@@ -949,9 +937,9 @@ Sources: [Docker Desktop incident releases](https://docs.docker.com/desktop/rele
 
 Sources: [WSL commands](https://learn.microsoft.com/en-us/windows/wsl/basic-commands), [Ubuntu’s incident package fix](https://ubuntu.com/blog/emudhra-ca-compromise-fixes-available), [AWS’s Amazon Linux CA fix](https://aws.amazon.com/security/security-bulletins/2026-150-aws/), [Azure ML environment management](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-manage-environments-v2?view=azureml-api-2), [GitHub action runtime metadata](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#runs-for-javascript-actions), [self-hosted runner responsibilities](https://docs.github.com/en/actions/reference/runners/self-hosted-runners), [targeted GitHub cache deletion](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manage-caches), [setup-node’s documented version inputs](https://github.com/actions/setup-node), [Ubuntu APT signature/checksum verification](https://manpages.ubuntu.com/manpages/noble/man8/apt-secure.8.html), [Amazon Linux package vs repository verification](https://docs.aws.amazon.com/linux/al2023/ug/repo-metadata-signing.html).
 
-[Back to action 20](#20-wsl-remote-machines-azure-ml-and-ci)
+[Back to action 18](#18-wsl-remote-machines-azure-ml-and-ci)
 
-### A21. Electron apps your team develops
+### A19. Electron apps your team develops
 
 **Download safety and ordering.** The dependency download runs through the already protected package manager/Node, with normal artifact-integrity checks. The distributed app then follows the team’s normal signing/release process.
 
@@ -961,9 +949,9 @@ Sources: [WSL commands](https://learn.microsoft.com/en-us/windows/wsl/basic-comm
 
 Sources: [Electron security advisory](https://github.com/electron/electron/security/advisories/GHSA-jr5w-w6x2-84p9), [npm install syntax](https://docs.npmjs.com/cli/v11/commands/npm-install/).
 
-[Back to action 21](#21-electron-apps-your-team-develops)
+[Back to action 19](#19-electron-apps-your-team-develops)
 
-### A22. Python publishing and signing tools
+### A20. Python publishing and signing tools
 
 **Download safety and ordering.** Use corrected pip/the original package manager for the Python tool. Retrieve/review the action reference through the protected source/CI route. Do not remove the team’s immutable-SHA or signing requirements just to copy the example.
 
@@ -973,9 +961,9 @@ Sources: [Electron security advisory](https://github.com/electron/electron/secur
 
 Sources: [Python advisory’s publishing-tool requirements](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576), [Sigstore 4.5.1](https://pypi.org/project/sigstore/4.5.1/), [PyPA publishing action v1.14.3](https://github.com/pypa/gh-action-pypi-publish/releases/tag/v1.14.3).
 
-[Back to action 22](#22-python-publishing-and-signing-tools)
+[Back to action 20](#20-python-publishing-and-signing-tools)
 
-### A23. Python apps that make HTTPS connections
+### A21. Python apps that make HTTPS connections
 
 **Download safety and ordering.** The certifi update is downloaded through the already corrected installer. Restart/redeploy does not establish network safety by itself; the running client must select the corrected verifier/list.
 
@@ -985,9 +973,9 @@ Sources: [Python advisory’s publishing-tool requirements](https://discuss.pyth
 
 Sources: [Requests certificate configuration](https://requests.readthedocs.io/en/stable/user/advanced/), [HTTPX SSL defaults and overrides](https://www.python-httpx.org/advanced/ssl/), [Render’s application remediation/verification guidance](https://render.com/docs/advisory-emudhra).
 
-[Back to action 23](#23-python-apps-that-make-https-connections)
+[Back to action 21](#21-python-apps-that-make-https-connections)
 
-### A24. Hugging Face and extra model downloaders
+### A22. Hugging Face and extra model downloaders
 
 **Download safety and ordering.** Python package updates use the corrected installer. Native model downloaders may use another TLS implementation; establish their protection before asking them to download models or fixes.
 
@@ -997,9 +985,9 @@ Sources: [Requests certificate configuration](https://requests.readthedocs.io/en
 
 Sources: [Hugging Face’s Xet client documentation](https://github.com/huggingface/hub-docs/blob/main/docs/hub/xet/using-xet-storage.md), [Hub installation instructions](https://huggingface.co/docs/huggingface_hub/installation).
 
-[Back to action 24](#24-hugging-face-and-extra-model-downloaders)
+[Back to action 22](#22-hugging-face-and-extra-model-downloaders)
 
-### A25. LLM API libraries, agent frameworks and MCP servers
+### A23. LLM API libraries, agent frameworks and MCP servers
 
 **Download safety and ordering.** Updates run through the corrected installer/backend. Protecting a parent editor does not authenticate downloads made by an independent MCP subprocess, SDK helper or proxy; check those actual routes too.
 
@@ -1009,9 +997,9 @@ Sources: [Hugging Face’s Xet client documentation](https://github.com/huggingf
 
 Sources: [HTTPX transport/trust configuration](https://www.python-httpx.org/advanced/ssl/), [AWS SDK bulletin](https://aws.amazon.com/security/security-bulletins/2026-150-aws/), [LiteLLM’s vendor fix and branch backports](https://github.com/BerriAI/litellm/releases/tag/v1.106.3).
 
-[Back to action 25](#25-llm-api-libraries-agent-frameworks-and-mcp-servers)
+[Back to action 23](#23-llm-api-libraries-agent-frameworks-and-mcp-servers)
 
-### A26. Ollama, LM Studio and other local LLM apps
+### A24. Ollama, LM Studio and other local LLM apps
 
 **Download safety and ordering.** An old app updater is not automatically safe because the app is listed here. Use a confirmed protected updater or verified official distribution through 02/IT. Model/runtime downloads can use separate components.
 
@@ -1021,9 +1009,9 @@ Sources: [HTTPX transport/trust configuration](https://www.python-httpx.org/adva
 
 Sources: [Ollama’s update FAQ](https://docs.ollama.com/faq), [LM Studio’s offline/network and runtime behavior](https://lmstudio.ai/docs/app/offline).
 
-[Back to action 26](#26-ollama-lm-studio-and-other-local-llm-apps)
+[Back to action 24](#24-ollama-lm-studio-and-other-local-llm-apps)
 
-### A27. Inference, training, evaluation and notebooks
+### A25. Inference, training, evaluation and notebooks
 
 **Download safety and ordering.** The same verified installer/client prerequisites apply on the GPU/cloud/container system. A local successful update or model benchmark does not authenticate a remote environment’s downloads.
 
@@ -1033,9 +1021,9 @@ Sources: [Ollama’s update FAQ](https://docs.ollama.com/faq), [LM Studio’s of
 
 Sources: [application/container remediation guidance](https://render.com/docs/advisory-emudhra), [Hugging Face native-download architecture](https://github.com/huggingface/hub-docs/blob/main/docs/hub/xet/using-xet-storage.md), [Docker host/container trust separation](https://docs.docker.com/engine/network/ca-certs/).
 
-[Back to action 27](#27-inference-training-evaluation-and-notebooks)
+[Back to action 25](#25-inference-training-evaluation-and-notebooks)
 
-### A28. Running services, workers and scheduled jobs
+### A26. Running services, workers and scheduled jobs
 
 **Download safety and ordering.** The build must obtain dependencies through corrected, verified routes. Deployment then selects that reviewed artifact through the organisation’s normal authenticated release process; a fresh deployment of an old image is not remediation.
 
@@ -1045,7 +1033,38 @@ Sources: [application/container remediation guidance](https://render.com/docs/ad
 
 Sources: [Render’s deployment and verification advisory](https://render.com/docs/advisory-emudhra).
 
-[Back to action 28](#28-running-services-workers-and-scheduled-jobs)
+[Back to action 26](#26-running-services-workers-and-scheduled-jobs)
+
+### A27. Python tools installed in separate environments
+
+**Checked: 27 October 2026.** These commands combine Python’s incident guidance with the installers’ documented operations. The added package requirements are our adaptations, not tool-specific incident instructions.
+
+| Claim | Sources | Quotes |
+| --- | --- | --- |
+| **Released fixes and order:** use pip 26.2.2+, certifi 2026.10.19+ and virtualenv 21.14.12+ wherever those components are used. Repair the downloading pip first using 09, including its hash-verified alternative when Python is not yet fixed. | [Python’s incident guidance](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576)<br><br>[First pip update → A09](#pip-update-before-the-python-fix) | **Targets:** “certifi 2026.10.19”; “pip 26.2.2”; “virtualenv 21.14.12”.<br><br>**Order:** “use this secure pip installation to upgrade certifi and uv”. |
+| **All installed uv tools:** `uv tool upgrade --all` is Astral’s command for updating every installed tool. Tool upgrades include their dependencies and use the uv repaired in 07. Existing version constraints still apply. | [Astral’s command for upgrading all tools](https://docs.astral.sh/uv/guides/tools/#upgrading-tools)<br><br>[What a tool upgrade includes](https://docs.astral.sh/uv/concepts/tools/#upgrading-tools)<br><br>[Astral’s incident advisory](https://github.com/astral-sh/uv/security/advisories/GHSA-hq85-5cpj-mr62) · [Current target and protection → A07](#a07-uv) | **All tools:** `uv tool upgrade --all`.<br><br>**Included packages:** “To upgrade all packages in a tool environment”.<br><br>**Incident advisory:** “uv 0.13.4 removes this root CA from its vendored CA bundle”. |
+| **uvx needs its own selection.** Our `--with` requirement selects a fixed dependency for that invocation; `--isolated` avoids reusing an installed tool. Repeat the requirement on future invocations. | [Astral’s extra-dependency syntax](https://docs.astral.sh/uv/concepts/tools/#including-additional-dependencies)<br><br>[Astral’s installed-tool selection](https://docs.astral.sh/uv/concepts/tools/#tool-versions) | **Dependency syntax:** `uvx --with <extra-package> <tool>`.<br><br>**Isolation:** “ignore the installed version”. |
+| **Poetry’s update route:** protect its own runtime before self-update. On Windows, the official installer uses PowerShell followed by Python; protect both through 01 and 08. This ordering is our application of the incident guidance. | [Poetry’s self-update command and Windows warning](https://python-poetry.org/docs/cli/#self)<br><br>[Official installer](https://python-poetry.org/docs/#installation)<br><br>[Windows protection → A01](#a01-operating-system-certificate-protection) · [Python protection → A08](#a08-python-installations) · [Certificate packages → A10](#a10-python-certificate-packages-in-each-environment) | **Update scope:** “the Poetry version and its dependencies in its current runtime environment”.<br><br>**Windows warning:** “`self` commands that update or remove packages may be problematic”.<br><br>**Installer command excerpts:** `Invoke-WebRequest`; `py -`. |
+
+#### Tools you run with uvx
+
+`uvx` can keep temporary tool environments in its cache; updating installed tools with `uv tool upgrade --all` does not update those cached copies. After completing 07, for a tool that uses certifi, add these options immediately after `uvx` in your usual command:
+
+```text
+--isolated --with "certifi>=2026.10.19"
+```
+
+Keep the rest of your command, including the tool name and its arguments. Use these options **each time** you run that tool: they select an environment meeting the requirement for that invocation. They do not repair every cached copy. If the tool also uses virtualenv, add `--with "virtualenv>=21.14.12"` before the tool name. Do not add packages the tool does not use. The Python selected for the command also needs the fix in 08.
+
+#### Check the tool’s own packages
+
+For a pip-installed tool, use `python -m pip show certifi virtualenv` in **its own environment**. For a uv-installed tool, use `uv tool list --show-paths`, then `uv pip show --python "TOOL_PYTHON" certifi virtualenv`, replacing `TOOL_PYTHON` with the Python executable inside that tool’s environment. These checks do not install missing packages; uv documents its inspection commands in the [CLI reference](https://docs.astral.sh/uv/reference/cli/#uv-pip-show).
+
+Where installed, certifi must be **2026.10.19 or later** and virtualenv **21.14.12 or later**. For pip/Conda environments, use the applicable update in 10 or 13. `uv tool upgrade --all` updates these dependencies in installed tool environments too; if saved constraints block a fixed version, revise them using [Astral’s reinstall guidance](https://docs.astral.sh/uv/concepts/tools/#upgrading-tools). Do not manually modify a uv tool environment with pip.
+
+These package updates do not guarantee a Python runtime upgrade, fix every vendor-bundled executable, or repair environments the tool previously created. Apply 08–10 to those environments too. Project version files remain in [12](#12-project-version-files-and-saved-environments).
+
+[Back to action 27](#27-python-tools-installed-in-separate-environments)
 
 ### Connection tests
 
