@@ -170,7 +170,10 @@ To update Conda, run in your usual Conda terminal:
 conda install --name base "conda>=26.9.4"
 ```
 
-Repeat for separate Conda installations. For other environments, follow [10](#10-python-certificate-packages-in-each-environment).
+Repeat for separate Conda installations.
+
+> [!NOTE]
+> **Updating Conda does not update packages in your other environments.** Follow the applicable steps in [08–10](#08-python-installations) for each environment you use.
 
 [Update evidence and verification limits → A06](#a06-conda-miniconda-anaconda-and-miniforge)
 
@@ -190,8 +193,8 @@ For direct installations, check `uv --version` first. If it is below **0.11.2**,
 
 **Check:** `uv --version` should now report **0.13.6 or later**.
 
-Note: You can run `uv self update --system-certs` in a general powershell terminal to update uv, but this will not directly fix or sync into existing uv environments currently on your machine. 
-You also need to run `uv sync` directly in your active environments to ensure that packages get updated.
+> [!NOTE]
+> **Updating uv does not update packages in your existing environments.** Follow the applicable steps in [08–10](#08-python-installations) for each environment, and [14](#14-project-version-files-and-saved-environments) to update and sync each uv project.
 
 [Update evidence and download protection → A07](#a07-uv)
 
@@ -525,6 +528,9 @@ I wasn’t sure whether anyone on the team uses these tools, so I haven’t incl
 - [Pixi](https://github.com/prefix-dev/pixi/releases/tag/v0.82.1)
 
 ## Part 2 — Explanations and supporting evidence
+
+> [!IMPORTANT]
+> **You do not need to read Part 2 in full.** It provides supporting evidence for the claims and the safety of the steps in Part 1.
 
 This section explains the guidance in Part 1. Claims, linked sources and short quotes show what the recommended actions cover and the evidence for carrying them out safely. It also includes alternative instructions and identifies pending fixes or gaps in the evidence. **A-numbers match the sections in Part 1**: A03 explains section 03, for example.
 
