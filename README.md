@@ -22,7 +22,7 @@ Each row is a separate item. Sections 01–20 and 22–25 have matching **A-numb
 | [05](#05-git-for-windows) | Git for Windows | Windows users with Git installed, including portable copies. |
 | [06](#06-conda-miniconda-anaconda-and-miniforge) | Conda, Miniconda, Anaconda and Miniforge | You use any of these Conda distributions. |
 | [07](#07-uv) | uv | You use uv. |
-| [08](#08-python-installations) | Python installations | You run Python, including through Conda, uv, Homebrew or python.org. |
+| [08](#08-python-installations) | Python installations | You run Python, including through Conda, uv, pyenv, Homebrew or python.org. |
 | [09](#09-pip-in-each-python-environment) | pip in each Python environment | You install packages with pip. Repeat in each environment you use. |
 | [10](#10-python-certificate-packages-in-each-environment) | Python certificate packages in each environment | An environment uses certifi or Conda ca-certificates for downloads/API calls. |
 | [11](#11-nodejs-npmnpx-yarn-pnpm-and-corepack) | Node.js, npm/npx, Yarn, pnpm and Corepack | You use Node, npm/npx, Yarn, pnpm or Corepack, including project-selected copies. |
@@ -192,9 +192,11 @@ For direct installations, check `uv --version` first. If it is below **0.11.2**,
 > [!IMPORTANT]
 > **These instructions do not apply to Python bundled with macOS or Xcode Command Line Tools.** Apple’s certificate fix for those command-line tools is still awaiting a macOS update. See [A03’s explanation and workaround guidance](#a03-macos-command-line-certificates).
 
-**Applies to:** People who use Python installed through Conda, uv, Homebrew or python.org.
+**Applies to:** People who use Python installed through Conda, uv, pyenv, Homebrew or python.org.
 
 **Before:** Complete the relevant update first: [Conda 06](#06-conda-miniconda-anaconda-and-miniforge), [Homebrew 04](#04-homebrew), or [uv 07](#07-uv).
+
+**For pyenv on macOS:** Complete **both root removals in [03](#03-macos-command-line-certificates)** first if you use Apple’s Git or curl. Complete [04](#04-homebrew) before updating a Homebrew-installed pyenv.
 
 Update each Python installation you use, keeping the same release line (for example, 3.12 stays on 3.12).
 
@@ -210,10 +212,13 @@ Update each Python installation you use, keeping the same release line (for exam
 | --- | --- |
 | Downloaded by uv | **Run once to update all Python versions downloaded by uv.**<br><br>`uv python upgrade` |
 | Conda — Python 3.12 example | **Run for each Conda environment you use, including `base`.** Replace `myenv` with its name.<br><br>`conda install --name myenv "python>=3.12.16,<3.13"` |
+| pyenv — Python 3.12 example | **Repeat for each Python release line you use**, replacing `3.12` with that line.<br><br>First update pyenv once using your existing method: **Homebrew:** `brew upgrade pyenv`; **pyenv installer or Git:** `git -C "$(pyenv root)" pull --ff-only`.<br><br>Then install the latest patch for that line: `pyenv install -s 3.12`. |
 | Homebrew — example for existing Python 3.12 | `brew upgrade python@3.12` |
 | python.org — Python 3.14 or 3.15 | Run the official [3.14.10 installer](https://www.python.org/downloads/release/python-31410/) or [3.15.2 installer](https://www.python.org/downloads/release/python-3152/), matching your existing release line. |
 
 **Existing uv environments:** Those tied to an exact older Python version may keep using it and need a separate environment update. Project version settings and lockfiles are covered in [14](#14-project-version-files-and-saved-environments).
+
+**Existing pyenv projects and environments:** The command installs a new Python, but your existing projects may still use an old one. Recreate affected virtual environments using the updated Python, reinstall their packages and switch your projects to those replacements.
 
 Python 3.10 or older no longer receives upstream fixes. Get help choosing a supported build if your existing supplier cannot provide the fix; do not change release lines just to copy an example.
 
@@ -637,15 +642,19 @@ Once the actual download route uses the corrected certificates, run the update i
 
 ### A08. Python installations
 
-**Checked: 27 October 2026.**
+**Checked: 28 October 2026.**
 
 | Claim | Sources | Quotes |
 | --- | --- | --- |
 | **Python fix:** the five minimum versions in 08 block the compromised keys in Python’s `ssl` module, including normal pip connections, even with an older certificate bundle. | [Python’s incident advisory](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576)<br><br>[Fixed-release announcement](https://discuss.python.org/t/python-3-15-2-3-14-10-3-13-18-3-12-16-and-3-11-18-are-out/109678) | **Advisory:** “regardless of whether the emSign root CA certificate is in use by ‘certifi’”.<br><br>**Release:** “These keys are now blocked by the `ssl` module”. |
+| python-build checks downloaded source against bundled SHA-256 checksums when a supported checksum tool is available. Obtain pyenv and its checksums through the protected update route first. | [python-build checksum verification](https://github.com/pyenv/pyenv/blob/master/plugins/python-build/README.md#checksum-verification)<br><br>[Python 3.12.16 download definition](https://github.com/pyenv/pyenv/blob/master/plugins/python-build/share/python-build/3.12.16) | **Verification:** “verify the SHA2 checksum of each downloaded package before installing it”.<br><br>**Definitions:** “All bundled definitions include checksums.” |
+| Installing a fixed Python with pyenv leaves existing Python installations and environments in place. They do not automatically switch to the new version. | [pyenv’s separate installations](https://github.com/pyenv/pyenv#locating-pyenv-provided-python-installations)<br><br>[pyenv-virtualenv’s environment creation](https://github.com/pyenv/pyenv-virtualenv#using-pyenv-virtualenv-with-pyenv) | **pyenv:** “Each Python version is installed into its own directory”.<br><br>**Environment example:** “will create a virtualenv based on Python 2.7.10”. |
 | **Existing uv environments:** the shared Python upgrade alone does not move environments tied to an exact old patch or installation path. This applies to security patches too. | [Astral’s upgrade limitations](https://docs.astral.sh/uv/concepts/python-versions/#upgrading-python-versions) | “an explicitly requested patch version”; “it will not be transparently upgraded to a new version”. |
 | **Older versions:** python.org’s 3.11–3.13 fixes are source-only; use a supplier’s fixed build. Python 3.10 and older no longer receive upstream security fixes. | [Python’s release announcement and maintainer’s explanation](https://discuss.python.org/t/python-3-15-2-3-14-10-3-13-18-3-12-16-and-3-11-18-are-out/109678)<br><br>[Python’s incident advisory](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576) | **3.11–3.13:** “source-only security releases”.<br><br>**Older:** “Python versions 3.10 and older are end-of-life”. |
 
 **Existing uv environments:** Environments that follow a Python release line normally pick up the updated patch automatically. Those tied to an exact older patch or installation path can keep using the old copy; they also need to be moved to a fixed Python. Project version settings and lockfiles are covered separately in [14](#14-project-version-files-and-saved-environments). Changing those files alone does not update an existing environment.
+
+These examples cover pyenv; the separate [pyenv-win project](https://github.com/pyenv/pyenv#windows) uses different update commands.
 
 [Back to action 08](#08-python-installations)
 
