@@ -181,7 +181,7 @@ For direct installations, check `uv --version` first. If it is below **0.11.2**,
 | --- | --- |
 | Direct installation — macOS or Windows | `uv self update --system-certs` |
 | Homebrew | `brew upgrade uv` |
-| pip | `python -m pip install --upgrade "uv>=0.13.6"` |
+| pip (complete [09](#09-pip-in-each-python-environment) first) | `python -m pip install --upgrade "uv>=0.13.6"` |
 
 **Check:** `uv --version` should now report **0.13.6 or later**.
 
