@@ -140,7 +140,7 @@ Homebrew upgrades an older package and skips one that is already current. If it 
 
 **Applies to:** Windows users who use a standard Git for Windows installation.
 
-Run:
+Run in Command Prompt or PowerShell:
 
 ```bash
 git update-git-for-windows
