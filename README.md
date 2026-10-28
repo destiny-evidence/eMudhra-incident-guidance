@@ -173,7 +173,7 @@ conda install --name base "conda>=26.9.4"
 Repeat for separate Conda installations.
 
 > [!NOTE]
-> **Updating Conda does not update packages in your other environments.** Follow the applicable steps in [08–10](#08-python-installations) for each environment you use.
+> **Updating Conda does not update packages in your Conda environments.** Follow the applicable steps in [08–10](#08-python-installations) for each environment you use.
 
 [Update evidence and verification limits → A06](#a06-conda-miniconda-anaconda-and-miniforge)
 
@@ -194,7 +194,7 @@ For direct installations, check `uv --version` first. If it is below **0.11.2**,
 **Check:** `uv --version` should now report **0.13.6 or later**.
 
 > [!NOTE]
-> **Updating uv does not update packages in your existing environments.** Follow the applicable steps in [08–10](#08-python-installations) for each environment, and [14](#14-project-version-files-and-saved-environments) to update and sync each uv project.
+> **Updating uv does not update packages in your uv environments.** Follow the applicable steps in [08–10](#08-python-installations) for each environment, and [14](#14-project-version-files-and-saved-environments) to update and sync each uv project.
 
 [Update evidence and download protection → A07](#a07-uv)
 
