@@ -2,6 +2,11 @@
 
 **Guidance checked: 26 October 2026.** For macOS and Windows, including Python/JavaScript projects, LLM tools, remote systems and containers.
 
+> [!IMPORTANT]
+> **Before running code that connects to the internet—especially in a virtual environment (venv)—check whether that environment still has tools or packages that need updating.**
+>
+> Updating tools globally does not necessarily update the copies inside each environment. Follow the relevant steps below for every environment you use.
+
 ## Part 1 — What to do
 
 > [!IMPORTANT]
