@@ -1,6 +1,6 @@
 # eMudhra certificate incident: developer update guide
 
-**Guidance checked: 26 October 2026.** For macOS and Windows, including Python/JavaScript projects, LLM tools, remote systems and containers.
+**Guidance checked: 26 October 2026.** For macOS and Windows, aimed at the Python/JavaScript projects we do in destiny.
 
 > [!IMPORTANT]
 > **Before running code that connects to the internet—especially in a virtual environment (venv)—check whether that environment still has tools or packages that need updating.**
