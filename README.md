@@ -190,6 +190,9 @@ For direct installations, check `uv --version` first. If it is below **0.11.2**,
 
 **Check:** `uv --version` should now report **0.13.6 or later**.
 
+Note: You can run `uv self update --system-certs` in a general powershell terminal to update uv, but this will not directly fix or sync into existing uv environments currently on your machine. 
+You also need to run `uv sync` directly in your active environments to ensure that packages get updated.
+
 [Update evidence and download protection → A07](#a07-uv)
 
 ### 08. Python installations
